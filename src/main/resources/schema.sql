@@ -1,7 +1,9 @@
 CREATE TABLE calendar_subtopic
 (id INTEGER NOT NULL,
 subtopic_id INTEGER UNIQUE,
-PRIMARY KEY (id));
+calendar_curriculum_id INTEGER,
+PRIMARY KEY (id),
+foreign key (calendar_curriculum_id) references calendar_curriculum(id));
 
 CREATE TABLE calendar_curriculum
 (id INTEGER NOT NULL,
@@ -22,6 +24,7 @@ status_id INTEGER UNIQUE,
 start_date_time TIMESTAMP,
 end_date_time TIMESTAMP,
 calendar_subtopic_id INTEGER UNIQUE,
+PRIMARY KEY (id),
 foreign key (calendar_subtopic_id) references calendar_subtopic(id),
 foreign key (status_id) references status(id));
 

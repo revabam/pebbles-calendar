@@ -9,10 +9,10 @@ values(2, 'Inheritance event', 'This is Inheritance event from the Inheritance s
 /*
 insert mock data into the calendar_subtopic table
 */
-insert into calendar_subtopic (id, subtopic_id)
-values(1, 1);
-insert into calendar_subtopic (id, subtopic_id)
-values(2, 2);
+insert into calendar_subtopic (id, subtopic_id, calendar_curriculum_id)
+values(1, 1, 1);
+insert into calendar_subtopic (id, subtopic_id, calendar_curriculum_id)
+values(2, 2, 1);
 
 /*
 insert mock data into the calendar_curriculum table
