@@ -1,9 +1,7 @@
 package com.revature.controllers;
 
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,6 +18,14 @@ import com.revature.models.CalendarCurriculum;
 import com.revature.models.CalendarEvent;
 import com.revature.models.CalendarSubtopic;
 import com.revature.services.CalendarService;
+
+/**
+ * <This is the controller containing the endpoints to hit for calendar CRUD functionality.
+ * It has CRUD functionality for calendar curriculums, calendar events, and calendar subtopics.
+ * There is no functionality to delete records from the database.
+ * The methods in this class are ran when the mapping endpoints are hit. They call CalendarService class methods to implement the CRUD functionality and finally return a ResponseEntity to the client>
+ * @author <author Derek Loisel><><batch 1806-jun18-usf-java><trainer Wezley Singleton>
+ */
 
 @CrossOrigin
 @RestController
