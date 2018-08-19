@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 @Table(name="CALENDAR_CURRICULUM")
+//The initial value on this sequence generator is set to 3 because there are already 2 records pre inserted into the database table from the data.sql script, in production this wouldn't be the case.
 @SequenceGenerator(name="calendar_curriculum_seq_name", sequenceName="calendar_curriculum_seq", initialValue=3, allocationSize=1)
 public class CalendarCurriculum implements Serializable {
 
@@ -113,8 +114,5 @@ public class CalendarCurriculum implements Serializable {
 	@Override
 	public String toString() {
 		return "CalendarCurriculum [id=" + id + ", curriculum_id=" + curriculum_id + ", batch_id=" + batch_id + "]";
-	}
-	
-	
-	
+	}	
 }
