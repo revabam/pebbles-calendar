@@ -1,15 +1,15 @@
+CREATE TABLE calendar_curriculum
+(id INTEGER NOT NULL,
+curriculum_id INTEGER UNIQUE,
+batch_id INTEGER UNIQUE,
+PRIMARY KEY (id));
+
 CREATE TABLE calendar_subtopic
 (id INTEGER NOT NULL,
 subtopic_id INTEGER UNIQUE,
 calendar_curriculum_id INTEGER,
 PRIMARY KEY (id),
 foreign key (calendar_curriculum_id) references calendar_curriculum(id));
-
-CREATE TABLE calendar_curriculum
-(id INTEGER NOT NULL,
-curriculum_id INTEGER UNIQUE,
-batch_id INTEGER UNIQUE,
-PRIMARY KEY (id));
 
 CREATE TABLE status
 (id INTEGER NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE calendar_event
 (id INTEGER NOT NULL,
 title VARCHAR(50) NOT NULL,
 description VARCHAR(250) NOT NULL,
-status_id INTEGER UNIQUE,
+status_id INTEGER,
 start_date_time TIMESTAMP,
 end_date_time TIMESTAMP,
 calendar_subtopic_id INTEGER UNIQUE,
