@@ -29,7 +29,7 @@ import com.revature.services.CalendarService;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value="/calendars")
+@RequestMapping
 public class CalendarController {
 
 	@Autowired
