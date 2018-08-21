@@ -27,7 +27,9 @@ public class CalendarService {
 	//inject the repositories used by this service
 	@Autowired
 	CalendarCurriculumRepository calendarCurriculumRepo;
+	@Autowired
 	CalendarEventRepository calendarEventRepo;
+	@Autowired
 	CalendarSubtopicRepository calendarSubtopicRepo;
 	
 	//find all calendar curriculums, events, or subtopics
