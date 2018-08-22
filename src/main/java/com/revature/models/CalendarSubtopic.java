@@ -15,27 +15,27 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-@Table(name="CALENDAR_SUBTOPIC")
-//The initial value on this sequence generator is set to 3 because there are already 2 records pre inserted into the database table from the data.sql script, in production this wouldn't be the case.
-@SequenceGenerator(name="calendar_subtopic_seq_name", sequenceName="calendar_subtopic_seq", initialValue=3, allocationSize=1)
-public class CalendarSubtopic implements Serializable{
+@Table(name = "CALENDAR_SUBTOPIC")
+@SequenceGenerator(name = "calendar_subtopic_seq_name", sequenceName = "calendar_subtopic_seq", initialValue = 3, allocationSize = 1)
+public class CalendarSubtopic implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="calendar_subtopic_seq_name")
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "calendar_subtopic_seq_name")
 	private Integer id;
-	
+
 	@NotNull
-	@Column(name="subtopic_id")
+	@Column(name = "subtopic_id")
 	private Integer subtopic_id;
-	
+
 	@NotNull
-	@Column(name="calendar_curriculum_id")
+	@Column(name = "calendar_curriculum_id")
 	private Integer calendarCurriculum_id;
-	
-	public CalendarSubtopic() {}
+
+	public CalendarSubtopic() {
+	}
 
 	public CalendarSubtopic(Integer id, Integer subtopic_id, Integer calendarCurriculum_id) {
 		super();

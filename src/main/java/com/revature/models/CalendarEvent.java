@@ -16,42 +16,42 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-@Table(name="CALENDAR_EVENT")
-//The initial value on this sequence generator is set to 3 because there are already 2 records pre inserted into the database table from the data.sql script, in production this wouldn't be the case.
-@SequenceGenerator(name="calendar_event_seq_name", sequenceName="calendar_event_seq", initialValue=3, allocationSize=1)
+@Table(name = "CALENDAR_EVENT")
+@SequenceGenerator(name = "calendar_event_seq_name", sequenceName = "calendar_event_seq", initialValue = 3, allocationSize = 1)
 public class CalendarEvent implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="calendar_event_seq_name")
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "calendar_event_seq_name")
 	private Integer id;
-	
+
 	@NotNull
-	@Column(name="title")
+	@Column(name = "title")
 	private String title;
-	
-	@Column(name="description")
+
+	@Column(name = "description")
 	private String description;
-	
+
 	@NotNull
-	@Column(name="status_id")
+	@Column(name = "status_id")
 	private Integer status_id;
-	
+
 	@NotNull
-	@Column(name="start_date_time")
+	@Column(name = "start_date_time")
 	private Date startDateTime;
-	
+
 	@NotNull
-	@Column(name="end_date_time")
+	@Column(name = "end_date_time")
 	private Date endDateTime;
-	
+
 	@NotNull
-	@Column(name="calendar_subtopic_id")
+	@Column(name = "calendar_subtopic_id")
 	private Integer calendarSubtopic_id;
-	
-	public CalendarEvent() {}
+
+	public CalendarEvent() {
+	}
 
 	public CalendarEvent(Integer id, String title, String description, Integer status_id, Date startDateTime,
 			Date endDateTime, Integer calendarSubtopic_id) {
