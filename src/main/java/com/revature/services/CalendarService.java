@@ -13,11 +13,11 @@ import com.revature.repositories.CalendarEventRepository;
 import com.revature.repositories.CalendarSubtopicRepository;
 
 /**
- * <This is the service that calls repository methods from CalendarCurriculumRepository, CalendarEventRepository, and CalendarSubtopicRepository to implement calendar CRUD functionality.  
+ * This is the service that calls repository methods from CalendarCurriculumRepository, CalendarEventRepository, and CalendarSubtopicRepository to implement calendar CRUD functionality.  
  * It implements CRUD functionality for calendar curriculums, calendar events, and calendar subtopics.
  * There is no functionality to delete records from the database.
- * The methods in this class are called from the CalendarController class methods. They call repository methods to carry out CRUD functionality.>
- * @author <author Derek Loisel><><batch 1806-jun18-usf-java><trainer Wezley Singleton>
+ * The methods in this class are called from the CalendarController class methods. They call repository methods to carry out CRUD functionality.
+ * @author author Derek Loisel batch 1806-jun18-usf-java trainer Wezley Singleton
  */
 
 @Service
