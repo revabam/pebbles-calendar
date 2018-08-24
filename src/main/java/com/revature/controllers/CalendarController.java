@@ -27,8 +27,7 @@ import com.revature.services.CalendarService;
  * endpoints are hit. They call CalendarService class methods to implement the
  * CRUD functionality and finally return a ResponseEntity to the client
  * 
- * @author <author Derek Loisel><><batch 1806-jun18-usf-java><trainer Wezley
- *         Singleton>
+ * @author author Derek Loisel | 1806-jun18-usf-java | Wezley Singleton
  */
 
 @CrossOrigin
@@ -51,7 +50,7 @@ public class CalendarController {
 	@GetMapping(value = "/curriculums", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<CalendarCurriculum>> findAllCalendarCurriculums() {
 		List<CalendarCurriculum> allCalendarCurriculums = calendarService.findAllCalendarCurriculums();
-		return new ResponseEntity<List<CalendarCurriculum>>(allCalendarCurriculums, HttpStatus.OK);
+		return new ResponseEntity<>(allCalendarCurriculums, HttpStatus.OK);
 	}
 
 	/**
@@ -63,11 +62,10 @@ public class CalendarController {
 	 *         and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	// events
 	@GetMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<CalendarEvent>> findAllCalendarEvents() {
 		List<CalendarEvent> allCalendarEvents = calendarService.findAllCalendarEvents();
-		return new ResponseEntity<List<CalendarEvent>>(allCalendarEvents, HttpStatus.OK);
+		return new ResponseEntity<>(allCalendarEvents, HttpStatus.OK);
 	}
 
 	/**
@@ -82,7 +80,7 @@ public class CalendarController {
 	@GetMapping(value = "/subtopics", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<CalendarSubtopic>> findAllCalendarSubtopics() {
 		List<CalendarSubtopic> allCalendarSubtopics = calendarService.findAllCalendarSubtopics();
-		return new ResponseEntity<List<CalendarSubtopic>>(allCalendarSubtopics, HttpStatus.OK);
+		return new ResponseEntity<>(allCalendarSubtopics, HttpStatus.OK);
 	}
 
 	/**
@@ -98,9 +96,9 @@ public class CalendarController {
 	public ResponseEntity<CalendarCurriculum> findCalendarCurriculumById(@PathVariable("id") int id) {
 		CalendarCurriculum calendarCurriculum = calendarService.findCalendarCurriculumById(id);
 		if (calendarCurriculum == null) {
-			return new ResponseEntity<CalendarCurriculum>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			return new ResponseEntity<CalendarCurriculum>(calendarCurriculum, HttpStatus.OK);
+			return new ResponseEntity<>(calendarCurriculum, HttpStatus.OK);
 		}
 	}
 
@@ -117,9 +115,9 @@ public class CalendarController {
 	public ResponseEntity<CalendarEvent> findCalendarEventById(@PathVariable("id") int id) {
 		CalendarEvent calendarEvent = calendarService.findCalendarEventById(id);
 		if (calendarEvent == null) {
-			return new ResponseEntity<CalendarEvent>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			return new ResponseEntity<CalendarEvent>(calendarEvent, HttpStatus.OK);
+			return new ResponseEntity<>(calendarEvent, HttpStatus.OK);
 		}
 	}
 
@@ -137,9 +135,9 @@ public class CalendarController {
 	public ResponseEntity<CalendarSubtopic> findCalendarSubtopicById(@PathVariable("id") int id) {
 		CalendarSubtopic calendarSubtopic = calendarService.findCalendarSubtopicById(id);
 		if (calendarSubtopic == null) {
-			return new ResponseEntity<CalendarSubtopic>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			return new ResponseEntity<CalendarSubtopic>(calendarSubtopic, HttpStatus.OK);
+			return new ResponseEntity<>(calendarSubtopic, HttpStatus.OK);
 		}
 	}
 
@@ -157,7 +155,7 @@ public class CalendarController {
 	public ResponseEntity<CalendarCurriculum> addCalendarCurriculum(
 			@Valid @RequestBody CalendarCurriculum newCalendarCurriculum) {
 		CalendarCurriculum calendarCurriculum = calendarService.addCalendarCurriculum(newCalendarCurriculum);
-		return new ResponseEntity<CalendarCurriculum>(calendarCurriculum, HttpStatus.CREATED);
+		return new ResponseEntity<>(calendarCurriculum, HttpStatus.CREATED);
 	}
 
 	/**
@@ -173,7 +171,7 @@ public class CalendarController {
 	@PostMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<CalendarEvent> addCalendarEvent(@Valid @RequestBody CalendarEvent newCalendarEvent) {
 		CalendarEvent calendarEvent = calendarService.addCalendarEvent(newCalendarEvent);
-		return new ResponseEntity<CalendarEvent>(calendarEvent, HttpStatus.CREATED);
+		return new ResponseEntity<>(calendarEvent, HttpStatus.CREATED);
 	}
 
 	/**
@@ -190,7 +188,7 @@ public class CalendarController {
 	public ResponseEntity<CalendarSubtopic> addCalendarSubtopic(
 			@Valid @RequestBody CalendarSubtopic newCalendarSubtopic) {
 		CalendarSubtopic calendarSubtopic = calendarService.addCalendarSubtopic(newCalendarSubtopic);
-		return new ResponseEntity<CalendarSubtopic>(calendarSubtopic, HttpStatus.CREATED);
+		return new ResponseEntity<>(calendarSubtopic, HttpStatus.CREATED);
 	}
 
 	/**
@@ -207,7 +205,7 @@ public class CalendarController {
 	public ResponseEntity<CalendarCurriculum> updateCalendarCurriculum(
 			@RequestBody CalendarCurriculum updatedCalendarCurriculum) {
 		CalendarCurriculum calendarCurriculum = calendarService.updateCalendarCurriculum(updatedCalendarCurriculum);
-		return new ResponseEntity<CalendarCurriculum>(calendarCurriculum, HttpStatus.OK);
+		return new ResponseEntity<>(calendarCurriculum, HttpStatus.OK);
 	}
 
 	/**
@@ -223,7 +221,7 @@ public class CalendarController {
 	@PutMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<CalendarEvent> updateCalendarEvent(@RequestBody CalendarEvent updatedCalendarEvent) {
 		CalendarEvent calendarEvent = calendarService.updateCalendarEvent(updatedCalendarEvent);
-		return new ResponseEntity<CalendarEvent>(calendarEvent, HttpStatus.OK);
+		return new ResponseEntity<>(calendarEvent, HttpStatus.OK);
 	}
 
 	/**
@@ -240,6 +238,6 @@ public class CalendarController {
 	public ResponseEntity<CalendarSubtopic> updateCalendarSubtopic(
 			@RequestBody CalendarSubtopic updatedCalendarSubtopic) {
 		CalendarSubtopic calendarSubtopic = calendarService.updateCalendarSubtopic(updatedCalendarSubtopic);
-		return new ResponseEntity<CalendarSubtopic>(calendarSubtopic, HttpStatus.OK);
+		return new ResponseEntity<>(calendarSubtopic, HttpStatus.OK);
 	}
 }
