@@ -21,7 +21,7 @@ import io.restassured.RestAssured;
 @ContextConfiguration(classes = Application.class)
 public class CalendarEventTest extends TestDriver {
 
-	static String url = "http://localhost:9994";
+	static String url = "http://localhost:9994/calendars";
 
 	@Test
 	public void canGetAllCalendarEvents() {
