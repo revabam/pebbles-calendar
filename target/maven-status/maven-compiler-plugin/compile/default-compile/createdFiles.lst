@@ -1,9 +1,0 @@
-com\revature\services\CalendarService.class
-com\revature\models\CalendarEvent.class
-com\revature\models\CalendarSubtopic.class
-com\revature\repositories\CalendarSubtopicRepository.class
-com\revature\repositories\CalendarCurriculumRepository.class
-com\revature\controllers\CalendarController.class
-com\revature\Application.class
-com\revature\models\CalendarCurriculum.class
-com\revature\repositories\CalendarEventRepository.class
