@@ -212,8 +212,7 @@ public class CalendarController {
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@PutMapping("/curriculum")
-	public ResponseEntity<CalendarCurriculum> updateCalendarCurriculum(
-			@RequestBody CalendarCurriculum updatedCalendarCurriculum) {
+	public ResponseEntity<CalendarCurriculum> updateCalendarCurriculum(@RequestBody CalendarCurriculum updatedCalendarCurriculum) {
 		CalendarCurriculum calendarCurriculum = calendarService.updateCalendarCurriculum(updatedCalendarCurriculum);
 		return new ResponseEntity<>(calendarCurriculum, HttpStatus.OK);
 	}
@@ -247,8 +246,7 @@ public class CalendarController {
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@PutMapping("/subtopic")
-	public ResponseEntity<CalendarSubtopic> updateCalendarSubtopic(
-			@RequestBody CalendarSubtopic updatedCalendarSubtopic) {
+	public ResponseEntity<CalendarSubtopic> updateCalendarSubtopic(@RequestBody CalendarSubtopic updatedCalendarSubtopic) {
 		CalendarSubtopic calendarSubtopic = calendarService.updateCalendarSubtopic(updatedCalendarSubtopic);
 		return new ResponseEntity<>(calendarSubtopic, HttpStatus.OK);
 	}
