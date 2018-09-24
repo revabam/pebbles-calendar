@@ -47,7 +47,7 @@ public class CalendarController {
 	 *         calendar curricula and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@GetMapping(value = "/curriculums", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/curriculum")
 	public ResponseEntity<List<CalendarCurriculum>> findAllCalendarCurriculums() {
 		List<CalendarCurriculum> allCalendarCurriculums = calendarService.findAllCalendarCurriculums();
 		return new ResponseEntity<>(allCalendarCurriculums, HttpStatus.OK);
@@ -62,7 +62,7 @@ public class CalendarController {
 	 *         and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@GetMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/event")
 	public ResponseEntity<List<CalendarEvent>> findAllCalendarEvents() {
 		List<CalendarEvent> allCalendarEvents = calendarService.findAllCalendarEvents();
 		return new ResponseEntity<>(allCalendarEvents, HttpStatus.OK);
@@ -77,7 +77,7 @@ public class CalendarController {
 	 *         and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@GetMapping(value = "/subtopics", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/subtopic")
 	public ResponseEntity<List<CalendarSubtopic>> findAllCalendarSubtopics() {
 		List<CalendarSubtopic> allCalendarSubtopics = calendarService.findAllCalendarSubtopics();
 		return new ResponseEntity<>(allCalendarSubtopics, HttpStatus.OK);
@@ -92,7 +92,7 @@ public class CalendarController {
 	 *         with the id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@GetMapping(value = "/curriculums/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/curriculum/{id}")
 	public ResponseEntity<CalendarCurriculum> findCalendarCurriculumById(@PathVariable("id") int id) {
 		CalendarCurriculum calendarCurriculum = calendarService.findCalendarCurriculumById(id);
 		if (calendarCurriculum == null) {
@@ -111,7 +111,7 @@ public class CalendarController {
 	 *         corresponds with the id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@GetMapping(value = "/events/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/event/{id}")
 	public ResponseEntity<CalendarEvent> findCalendarEventById(@PathVariable("id") int id) {
 		CalendarEvent calendarEvent = calendarService.findCalendarEventById(id);
 		if (calendarEvent == null) {
@@ -131,7 +131,7 @@ public class CalendarController {
 	 *         corresponds with the id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@GetMapping(value = "/subtopics/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/subtopic/{id}")
 	public ResponseEntity<CalendarSubtopic> findCalendarSubtopicById(@PathVariable("id") int id) {
 		CalendarSubtopic calendarSubtopic = calendarService.findCalendarSubtopicById(id);
 		if (calendarSubtopic == null) {
@@ -151,7 +151,7 @@ public class CalendarController {
 	 *         generated id, and a corresponding http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@PostMapping(value = "/curriculums", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping("/curriculum")
 	public ResponseEntity<CalendarCurriculum> addCalendarCurriculum(
 			@Valid @RequestBody CalendarCurriculum newCalendarCurriculum) {
 		CalendarCurriculum calendarCurriculum = calendarService.addCalendarCurriculum(newCalendarCurriculum);
@@ -168,7 +168,7 @@ public class CalendarController {
 	 *         id, and a corresponding http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@PostMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping("/event")
 	public ResponseEntity<CalendarEvent> addCalendarEvent(@Valid @RequestBody CalendarEvent newCalendarEvent) {
 		CalendarEvent calendarEvent = calendarService.addCalendarEvent(newCalendarEvent);
 		return new ResponseEntity<>(calendarEvent, HttpStatus.CREATED);
@@ -184,7 +184,7 @@ public class CalendarController {
 	 *         generated id, and a corresponding http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@PostMapping(value = "/subtopics", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping("/subtopic")
 	public ResponseEntity<CalendarSubtopic> addCalendarSubtopic(
 			@Valid @RequestBody CalendarSubtopic newCalendarSubtopic) {
 		CalendarSubtopic calendarSubtopic = calendarService.addCalendarSubtopic(newCalendarSubtopic);
@@ -201,7 +201,7 @@ public class CalendarController {
 	 *         and a corresponding Http Status Code in a ResponseEntity
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@PutMapping(value = "/curriculums", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping("/curriculum")
 	public ResponseEntity<CalendarCurriculum> updateCalendarCurriculum(
 			@RequestBody CalendarCurriculum updatedCalendarCurriculum) {
 		CalendarCurriculum calendarCurriculum = calendarService.updateCalendarCurriculum(updatedCalendarCurriculum);
@@ -218,7 +218,7 @@ public class CalendarController {
 	 *         corresponding Http Status Code in a ResponseEntity
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@PutMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping("/event")
 	public ResponseEntity<CalendarEvent> updateCalendarEvent(@RequestBody CalendarEvent updatedCalendarEvent) {
 		CalendarEvent calendarEvent = calendarService.updateCalendarEvent(updatedCalendarEvent);
 		return new ResponseEntity<>(calendarEvent, HttpStatus.OK);
@@ -234,7 +234,7 @@ public class CalendarController {
 	 *         a corresponding Http Status Code in a ResponseEntity
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	 */
-	@PutMapping(value = "/subtopics", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping("/subtopic")
 	public ResponseEntity<CalendarSubtopic> updateCalendarSubtopic(
 			@RequestBody CalendarSubtopic updatedCalendarSubtopic) {
 		CalendarSubtopic calendarSubtopic = calendarService.updateCalendarSubtopic(updatedCalendarSubtopic);
