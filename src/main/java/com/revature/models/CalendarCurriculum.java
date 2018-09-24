@@ -24,63 +24,63 @@ public class CalendarCurriculum implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "calendar_curriculum_seq_name")
-	private Integer id;
+	private int id;
 
 	@NotNull
 	@Column(name = "curriculum_id")
-	private Integer curriculum_id;
+	private int curriculumId;
 
 	@NotNull
 	@Column(name = "batch_id")
-	private Integer batch_id;
+	private int batchId;
 
 	public CalendarCurriculum() {
 	}
 
-	public CalendarCurriculum(Integer id, Integer curriculum_id, Integer batch_id) {
+	public CalendarCurriculum(int id, int curriculumId, int batchId) {
 		super();
 		this.id = id;
-		this.curriculum_id = curriculum_id;
-		this.batch_id = batch_id;
+		this.curriculumId = curriculumId;
+		this.batchId = batchId;
 	}
 
-	public CalendarCurriculum(Integer curriculum_id, Integer batch_id) {
+	public CalendarCurriculum(int curriculumId, int batchId) {
 		super();
-		this.curriculum_id = curriculum_id;
-		this.batch_id = batch_id;
+		this.curriculumId = curriculumId;
+		this.batchId = batchId;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Integer getCurriculum_id() {
-		return curriculum_id;
+	public int getCurriculumId() {
+		return curriculumId;
 	}
 
-	public void setCurriculum_id(Integer curriculum_id) {
-		this.curriculum_id = curriculum_id;
+	public void setCurriculumId(int curriculumId) {
+		this.curriculumId = curriculumId;
 	}
 
-	public Integer getBatch_id() {
-		return batch_id;
+	public int getBatchId() {
+		return batchId;
 	}
 
-	public void setBatch_id(Integer batch_id) {
-		this.batch_id = batch_id;
+	public void setBatchId(int batchId) {
+		this.batchId = batchId;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((batch_id == null) ? 0 : batch_id.hashCode());
-		result = prime * result + ((curriculum_id == null) ? 0 : curriculum_id.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + batchId;
+		result = prime * result + curriculumId;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -93,26 +93,18 @@ public class CalendarCurriculum implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CalendarCurriculum other = (CalendarCurriculum) obj;
-		if (batch_id == null) {
-			if (other.batch_id != null)
-				return false;
-		} else if (!batch_id.equals(other.batch_id))
+		if (batchId != other.batchId)
 			return false;
-		if (curriculum_id == null) {
-			if (other.curriculum_id != null)
-				return false;
-		} else if (!curriculum_id.equals(other.curriculum_id))
+		if (curriculumId != other.curriculumId)
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "CalendarCurriculum [id=" + id + ", curriculum_id=" + curriculum_id + ", batch_id=" + batch_id + "]";
+		return "CalendarCurriculum [id=" + id + ", curriculumId=" + curriculumId + ", batchId=" + batchId + "]";
 	}
+
 }

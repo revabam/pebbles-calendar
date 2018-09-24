@@ -46,6 +46,7 @@ public class CalendarController {
 	 * @return ResponseEntity<List<CalendarCurriculum>> Returns a list of all
 	 *         calendar curricula and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@GetMapping("/curriculum")
 	public ResponseEntity<List<CalendarCurriculum>> findAllCalendarCurriculums() {
@@ -61,6 +62,7 @@ public class CalendarController {
 	 * @return Returns a response entity containing a list of all calendar events
 	 *         and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@GetMapping("/event")
 	public ResponseEntity<List<CalendarEvent>> findAllCalendarEvents() {
@@ -76,6 +78,7 @@ public class CalendarController {
 	 * @return Returns a response entity containing a list of all calendar subtopics
 	 *         and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@GetMapping("/subtopic")
 	public ResponseEntity<List<CalendarSubtopic>> findAllCalendarSubtopics() {
@@ -91,6 +94,7 @@ public class CalendarController {
 	 * @return Returns a response entity containing a curriculum that corresponds
 	 *         with the id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@GetMapping("/curriculum/{id}")
 	public ResponseEntity<CalendarCurriculum> findCalendarCurriculumById(@PathVariable("id") int id) {
@@ -110,6 +114,7 @@ public class CalendarController {
 	 * @return Returns a response entity containing a calendar event that
 	 *         corresponds with the id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@GetMapping("/event/{id}")
 	public ResponseEntity<CalendarEvent> findCalendarEventById(@PathVariable("id") int id) {
@@ -130,6 +135,7 @@ public class CalendarController {
 	 * @return Returns a response entity containing a calendar event that
 	 *         corresponds with the id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@GetMapping("/subtopic/{id}")
 	public ResponseEntity<CalendarSubtopic> findCalendarSubtopicById(@PathVariable("id") int id) {
@@ -150,6 +156,7 @@ public class CalendarController {
 	 * @return The CalendarCurriculum that was added to the database with its
 	 *         generated id, and a corresponding http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@PostMapping("/curriculum")
 	public ResponseEntity<CalendarCurriculum> addCalendarCurriculum(
@@ -167,6 +174,7 @@ public class CalendarController {
 	 * @return The CalendarEvent that was added to the database with its generated
 	 *         id, and a corresponding http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@PostMapping("/event")
 	public ResponseEntity<CalendarEvent> addCalendarEvent(@Valid @RequestBody CalendarEvent newCalendarEvent) {
@@ -183,6 +191,7 @@ public class CalendarController {
 	 * @return The CalendarSubtopic that was added to the database with its
 	 *         generated id, and a corresponding http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@PostMapping("/subtopic")
 	public ResponseEntity<CalendarSubtopic> addCalendarSubtopic(
@@ -200,6 +209,7 @@ public class CalendarController {
 	 * @return The updated CalendarCurriculum object as it exist in the database,
 	 *         and a corresponding Http Status Code in a ResponseEntity
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@PutMapping("/curriculum")
 	public ResponseEntity<CalendarCurriculum> updateCalendarCurriculum(
@@ -217,6 +227,7 @@ public class CalendarController {
 	 * @return The updated CalendarEvent object as it exist in the database, and a
 	 *         corresponding Http Status Code in a ResponseEntity
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@PutMapping("/event")
 	public ResponseEntity<CalendarEvent> updateCalendarEvent(@RequestBody CalendarEvent updatedCalendarEvent) {
@@ -233,6 +244,7 @@ public class CalendarController {
 	 * @return The updated CalendarSubtopic object as it exist in the database, and
 	 *         a corresponding Http Status Code in a ResponseEntity
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@PutMapping("/subtopic")
 	public ResponseEntity<CalendarSubtopic> updateCalendarSubtopic(

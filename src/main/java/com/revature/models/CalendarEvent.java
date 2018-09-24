@@ -25,7 +25,7 @@ public class CalendarEvent implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "calendar_event_seq_name")
-	private Integer id;
+	private int id;
 
 	@NotNull
 	@Column(name = "title")
@@ -36,7 +36,7 @@ public class CalendarEvent implements Serializable {
 
 	@NotNull
 	@Column(name = "status_id")
-	private Integer status_id;
+	private int statusId;
 
 	@NotNull
 	@Column(name = "start_date_time")
@@ -48,39 +48,39 @@ public class CalendarEvent implements Serializable {
 
 	@NotNull
 	@Column(name = "calendar_subtopic_id")
-	private Integer calendarSubtopic_id;
+	private int calendarSubtopicId;
 
 	public CalendarEvent() {
 	}
 
-	public CalendarEvent(Integer id, String title, String description, Integer status_id, Date startDateTime,
-			Date endDateTime, Integer calendarSubtopic_id) {
+	public CalendarEvent(int id, String title, String description, int statusId, Date startDateTime, Date endDateTime,
+			int calendarSubtopicId) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.status_id = status_id;
+		this.statusId = statusId;
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
-		this.calendarSubtopic_id = calendarSubtopic_id;
+		this.calendarSubtopicId = calendarSubtopicId;
 	}
 
-	public CalendarEvent(String title, String description, Integer status_id, Date startDateTime, Date endDateTime,
-			Integer calendarSubtopic_id) {
+	public CalendarEvent(String title, String description, int statusId, Date startDateTime, Date endDateTime,
+			int calendarSubtopicId) {
 		super();
 		this.title = title;
 		this.description = description;
-		this.status_id = status_id;
+		this.statusId = statusId;
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
-		this.calendarSubtopic_id = calendarSubtopic_id;
+		this.calendarSubtopicId = calendarSubtopicId;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -100,12 +100,12 @@ public class CalendarEvent implements Serializable {
 		this.description = description;
 	}
 
-	public Integer getStatus_id() {
-		return status_id;
+	public int getStatusId() {
+		return statusId;
 	}
 
-	public void setStatus_id(Integer status_id) {
-		this.status_id = status_id;
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
 	}
 
 	public Date getStartDateTime() {
@@ -124,24 +124,24 @@ public class CalendarEvent implements Serializable {
 		this.endDateTime = endDateTime;
 	}
 
-	public Integer getCalendarSubtopic_id() {
-		return calendarSubtopic_id;
+	public int getCalendarSubtopicId() {
+		return calendarSubtopicId;
 	}
 
-	public void setCalendarSubtopic_id(Integer calendarSubtopic_id) {
-		this.calendarSubtopic_id = calendarSubtopic_id;
+	public void setCalendarSubtopicId(int calendarSubtopicId) {
+		this.calendarSubtopicId = calendarSubtopicId;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((calendarSubtopic_id == null) ? 0 : calendarSubtopic_id.hashCode());
+		result = prime * result + calendarSubtopicId;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDateTime == null) ? 0 : endDateTime.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((startDateTime == null) ? 0 : startDateTime.hashCode());
-		result = prime * result + ((status_id == null) ? 0 : status_id.hashCode());
+		result = prime * result + statusId;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -155,10 +155,7 @@ public class CalendarEvent implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CalendarEvent other = (CalendarEvent) obj;
-		if (calendarSubtopic_id == null) {
-			if (other.calendarSubtopic_id != null)
-				return false;
-		} else if (!calendarSubtopic_id.equals(other.calendarSubtopic_id))
+		if (calendarSubtopicId != other.calendarSubtopicId)
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -170,20 +167,14 @@ public class CalendarEvent implements Serializable {
 				return false;
 		} else if (!endDateTime.equals(other.endDateTime))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (startDateTime == null) {
 			if (other.startDateTime != null)
 				return false;
 		} else if (!startDateTime.equals(other.startDateTime))
 			return false;
-		if (status_id == null) {
-			if (other.status_id != null)
-				return false;
-		} else if (!status_id.equals(other.status_id))
+		if (statusId != other.statusId)
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -195,8 +186,9 @@ public class CalendarEvent implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CalendarEvent [id=" + id + ", title=" + title + ", description=" + description + ", status_id="
-				+ status_id + ", startDateTime=" + startDateTime + ", endDateTime=" + endDateTime
-				+ ", calendarSubtopic_id=" + calendarSubtopic_id + "]";
+		return "CalendarEvent [id=" + id + ", title=" + title + ", description=" + description + ", statusId="
+				+ statusId + ", startDateTime=" + startDateTime + ", endDateTime=" + endDateTime
+				+ ", calendarSubtopicId=" + calendarSubtopicId + "]";
 	}
+
 }

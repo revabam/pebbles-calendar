@@ -104,7 +104,8 @@ public class CalendarSubtopic implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CalendarSubtopic [id=" + id + ", subtopic_id=" + subtopicId + ", calendarCurriculum_id="
+		return "CalendarSubtopic [id=" + id + ", subtopicId=" + subtopicId + ", calendarCurriculumId="
 				+ calendarCurriculumId + "]";
 	}
+
 }
