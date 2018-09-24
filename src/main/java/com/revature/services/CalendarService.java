@@ -64,7 +64,8 @@ public class CalendarService {
 	}
 
 	/**
-	 * This method Returns the calendar curriculum that corresponds with the id parameter
+	 * This method Returns the calendar curriculum that corresponds with the id
+	 * parameter
 	 * 
 	 * @param int id
 	 * @return CalendarCurriculum
@@ -84,7 +85,8 @@ public class CalendarService {
 	}
 
 	/**
-	 * This method Returns the calendar subtopic that corresponds with the id parameter
+	 * This method Returns the calendar subtopic that corresponds with the id
+	 * parameter
 	 * 
 	 * @param int id
 	 * @return CalendarSubtopic
@@ -128,15 +130,10 @@ public class CalendarService {
 	 * 
 	 * @param CalendarCurriculum updatedCalendarCurriculum
 	 * @return CalendarCurriculum
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarCurriculum updateCalendarCurriculum(CalendarCurriculum updatedCalendarCurriculum) {
-		CalendarCurriculum calendarCurriculum = calendarCurriculumRepo
-				.findCalendarCurriculumById(updatedCalendarCurriculum.getId());
-		if (calendarCurriculum == null) {
-			return calendarCurriculum;
-		} else {
-			return calendarCurriculumRepo.save(updatedCalendarCurriculum);
-		}
+		return calendarCurriculumRepo.save(updatedCalendarCurriculum);
 	}
 
 	/**
@@ -144,14 +141,10 @@ public class CalendarService {
 	 * 
 	 * @param CalendarEvent updatedCalendarEvent
 	 * @return CalendarEvent
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarEvent updateCalendarEvent(CalendarEvent updatedCalendarEvent) {
-		CalendarEvent calendarEvent = calendarEventRepo.findCalendarEventById(updatedCalendarEvent.getId());
-		if (calendarEvent == null) {
-			return calendarEvent;
-		} else {
-			return calendarEventRepo.save(updatedCalendarEvent);
-		}
+		return calendarEventRepo.save(updatedCalendarEvent);
 	}
 
 	/**
@@ -159,14 +152,9 @@ public class CalendarService {
 	 * 
 	 * @param CalendarSubtopic updatedCalendarSubtopic
 	 * @return CalendarSubtopic
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarSubtopic updateCalendarSubtopic(CalendarSubtopic updatedCalendarSubtopic) {
-		CalendarSubtopic calendarSubtopic = calendarSubtopicRepo
-				.findCalendarSubtopicById(updatedCalendarSubtopic.getId());
-		if (calendarSubtopic == null) {
-			return calendarSubtopic;
-		} else {
-			return calendarSubtopicRepo.save(updatedCalendarSubtopic);
-		}
+		return calendarSubtopicRepo.save(updatedCalendarSubtopic);
 	}
 }
