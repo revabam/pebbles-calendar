@@ -24,63 +24,63 @@ public class CalendarSubtopic implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "calendar_subtopic_seq_name")
-	private Integer id;
+	private int id;
 
 	@NotNull
 	@Column(name = "subtopic_id")
-	private Integer subtopic_id;
+	private int subtopicId;
 
 	@NotNull
 	@Column(name = "calendar_curriculum_id")
-	private Integer calendarCurriculum_id;
+	private int calendarCurriculumId;
 
 	public CalendarSubtopic() {
 	}
 
-	public CalendarSubtopic(Integer id, Integer subtopic_id, Integer calendarCurriculum_id) {
+	public CalendarSubtopic(int id, int subtopicId, int calendarCurriculumId) {
 		super();
 		this.id = id;
-		this.subtopic_id = subtopic_id;
-		this.calendarCurriculum_id = calendarCurriculum_id;
+		this.subtopicId = subtopicId;
+		this.calendarCurriculumId = calendarCurriculumId;
 	}
 
-	public CalendarSubtopic(Integer subtopic_id, Integer calendarCurriculum_id) {
+	public CalendarSubtopic(int subtopicId, int calendarCurriculumId) {
 		super();
-		this.subtopic_id = subtopic_id;
-		this.calendarCurriculum_id = calendarCurriculum_id;
+		this.subtopicId = subtopicId;
+		this.calendarCurriculumId = calendarCurriculumId;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Integer getSubtopic_id() {
-		return subtopic_id;
+	public int getSubtopicId() {
+		return subtopicId;
 	}
 
-	public void setSubtopic_id(Integer subtopic_id) {
-		this.subtopic_id = subtopic_id;
+	public void setSubtopicId(int subtopicId) {
+		this.subtopicId = subtopicId;
 	}
 
-	public Integer getCalendarCurriculum_id() {
-		return calendarCurriculum_id;
+	public int getCalendarCurriculumId() {
+		return calendarCurriculumId;
 	}
 
-	public void setCalendarCurriculum_id(Integer calendarCurriculum_id) {
-		this.calendarCurriculum_id = calendarCurriculum_id;
+	public void setCalendarCurriculumId(int calendarCurriculumId) {
+		this.calendarCurriculumId = calendarCurriculumId;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((calendarCurriculum_id == null) ? 0 : calendarCurriculum_id.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((subtopic_id == null) ? 0 : subtopic_id.hashCode());
+		result = prime * result + calendarCurriculumId;
+		result = prime * result + id;
+		result = prime * result + subtopicId;
 		return result;
 	}
 
@@ -93,27 +93,19 @@ public class CalendarSubtopic implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CalendarSubtopic other = (CalendarSubtopic) obj;
-		if (calendarCurriculum_id == null) {
-			if (other.calendarCurriculum_id != null)
-				return false;
-		} else if (!calendarCurriculum_id.equals(other.calendarCurriculum_id))
+		if (calendarCurriculumId != other.calendarCurriculumId)
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
-		if (subtopic_id == null) {
-			if (other.subtopic_id != null)
-				return false;
-		} else if (!subtopic_id.equals(other.subtopic_id))
+		if (subtopicId != other.subtopicId)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "CalendarSubtopic [id=" + id + ", subtopic_id=" + subtopic_id + ", calendarCurriculum_id="
-				+ calendarCurriculum_id + "]";
+		return "CalendarSubtopic [id=" + id + ", subtopicId=" + subtopicId + ", calendarCurriculumId="
+				+ calendarCurriculumId + "]";
 	}
+
 }

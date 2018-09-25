@@ -1,10 +1,11 @@
 package com.revature.controllers;
 
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.revature.models.CalendarCurriculum;
 import com.revature.models.CalendarEvent;
 import com.revature.models.CalendarSubtopic;
@@ -46,8 +48,9 @@ public class CalendarController {
 	 * @return ResponseEntity<List<CalendarCurriculum>> Returns a list of all
 	 *         calendar curricula and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@GetMapping(value = "/curriculums", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/curriculum")
 	public ResponseEntity<List<CalendarCurriculum>> findAllCalendarCurriculums() {
 		List<CalendarCurriculum> allCalendarCurriculums = calendarService.findAllCalendarCurriculums();
 		return new ResponseEntity<>(allCalendarCurriculums, HttpStatus.OK);
@@ -61,8 +64,9 @@ public class CalendarController {
 	 * @return Returns a response entity containing a list of all calendar events
 	 *         and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@GetMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/event")
 	public ResponseEntity<List<CalendarEvent>> findAllCalendarEvents() {
 		List<CalendarEvent> allCalendarEvents = calendarService.findAllCalendarEvents();
 		return new ResponseEntity<>(allCalendarEvents, HttpStatus.OK);
@@ -76,8 +80,9 @@ public class CalendarController {
 	 * @return Returns a response entity containing a list of all calendar subtopics
 	 *         and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@GetMapping(value = "/subtopics", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/subtopic")
 	public ResponseEntity<List<CalendarSubtopic>> findAllCalendarSubtopics() {
 		List<CalendarSubtopic> allCalendarSubtopics = calendarService.findAllCalendarSubtopics();
 		return new ResponseEntity<>(allCalendarSubtopics, HttpStatus.OK);
@@ -91,15 +96,15 @@ public class CalendarController {
 	 * @return Returns a response entity containing a curriculum that corresponds
 	 *         with the id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@GetMapping(value = "/curriculums/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/curriculum/{id}")
 	public ResponseEntity<CalendarCurriculum> findCalendarCurriculumById(@PathVariable("id") int id) {
 		CalendarCurriculum calendarCurriculum = calendarService.findCalendarCurriculumById(id);
-		if (calendarCurriculum == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} else {
+		if (calendarCurriculum != null) {
 			return new ResponseEntity<>(calendarCurriculum, HttpStatus.OK);
 		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -110,15 +115,15 @@ public class CalendarController {
 	 * @return Returns a response entity containing a calendar event that
 	 *         corresponds with the id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@GetMapping(value = "/events/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/event/{id}")
 	public ResponseEntity<CalendarEvent> findCalendarEventById(@PathVariable("id") int id) {
 		CalendarEvent calendarEvent = calendarService.findCalendarEventById(id);
-		if (calendarEvent == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} else {
+		if (calendarEvent != null) {
 			return new ResponseEntity<>(calendarEvent, HttpStatus.OK);
-		}
+		} 
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -130,15 +135,15 @@ public class CalendarController {
 	 * @return Returns a response entity containing a calendar event that
 	 *         corresponds with the id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@GetMapping(value = "/subtopics/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/subtopic/{id}")
 	public ResponseEntity<CalendarSubtopic> findCalendarSubtopicById(@PathVariable("id") int id) {
 		CalendarSubtopic calendarSubtopic = calendarService.findCalendarSubtopicById(id);
-		if (calendarSubtopic == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} else {
+		if (calendarSubtopic != null) {
 			return new ResponseEntity<>(calendarSubtopic, HttpStatus.OK);
-		}
+		} 
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -150,8 +155,9 @@ public class CalendarController {
 	 * @return The CalendarCurriculum that was added to the database with its
 	 *         generated id, and a corresponding http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@PostMapping(value = "/curriculums", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping("/curriculum")
 	public ResponseEntity<CalendarCurriculum> addCalendarCurriculum(
 			@Valid @RequestBody CalendarCurriculum newCalendarCurriculum) {
 		CalendarCurriculum calendarCurriculum = calendarService.addCalendarCurriculum(newCalendarCurriculum);
@@ -167,8 +173,9 @@ public class CalendarController {
 	 * @return The CalendarEvent that was added to the database with its generated
 	 *         id, and a corresponding http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@PostMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping("/event")
 	public ResponseEntity<CalendarEvent> addCalendarEvent(@Valid @RequestBody CalendarEvent newCalendarEvent) {
 		CalendarEvent calendarEvent = calendarService.addCalendarEvent(newCalendarEvent);
 		return new ResponseEntity<>(calendarEvent, HttpStatus.CREATED);
@@ -183,8 +190,9 @@ public class CalendarController {
 	 * @return The CalendarSubtopic that was added to the database with its
 	 *         generated id, and a corresponding http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@PostMapping(value = "/subtopics", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping("/subtopic")
 	public ResponseEntity<CalendarSubtopic> addCalendarSubtopic(
 			@Valid @RequestBody CalendarSubtopic newCalendarSubtopic) {
 		CalendarSubtopic calendarSubtopic = calendarService.addCalendarSubtopic(newCalendarSubtopic);
@@ -200,12 +208,15 @@ public class CalendarController {
 	 * @return The updated CalendarCurriculum object as it exist in the database,
 	 *         and a corresponding Http Status Code in a ResponseEntity
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@PutMapping(value = "/curriculums", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<CalendarCurriculum> updateCalendarCurriculum(
-			@RequestBody CalendarCurriculum updatedCalendarCurriculum) {
+	@PutMapping("/curriculum")
+	public ResponseEntity<CalendarCurriculum> updateCalendarCurriculum(@RequestBody CalendarCurriculum updatedCalendarCurriculum) {
 		CalendarCurriculum calendarCurriculum = calendarService.updateCalendarCurriculum(updatedCalendarCurriculum);
-		return new ResponseEntity<>(calendarCurriculum, HttpStatus.OK);
+		if (calendarCurriculum != null) {
+			return new ResponseEntity<>(calendarCurriculum, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -217,11 +228,15 @@ public class CalendarController {
 	 * @return The updated CalendarEvent object as it exist in the database, and a
 	 *         corresponding Http Status Code in a ResponseEntity
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@PutMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping("/event")
 	public ResponseEntity<CalendarEvent> updateCalendarEvent(@RequestBody CalendarEvent updatedCalendarEvent) {
 		CalendarEvent calendarEvent = calendarService.updateCalendarEvent(updatedCalendarEvent);
-		return new ResponseEntity<>(calendarEvent, HttpStatus.OK);
+		if (calendarEvent != null) {
+			return new ResponseEntity<>(calendarEvent, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -233,11 +248,14 @@ public class CalendarController {
 	 * @return The updated CalendarSubtopic object as it exist in the database, and
 	 *         a corresponding Http Status Code in a ResponseEntity
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@PutMapping(value = "/subtopics", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<CalendarSubtopic> updateCalendarSubtopic(
-			@RequestBody CalendarSubtopic updatedCalendarSubtopic) {
+	@PutMapping("/subtopic")
+	public ResponseEntity<CalendarSubtopic> updateCalendarSubtopic(@RequestBody CalendarSubtopic updatedCalendarSubtopic) {
 		CalendarSubtopic calendarSubtopic = calendarService.updateCalendarSubtopic(updatedCalendarSubtopic);
-		return new ResponseEntity<>(calendarSubtopic, HttpStatus.OK);
+		if (calendarSubtopic != null) {
+			return new ResponseEntity<>(calendarSubtopic, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 }
