@@ -1,10 +1,11 @@
 package com.revature.controllers;
 
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.revature.models.CalendarCurriculum;
 import com.revature.models.CalendarEvent;
 import com.revature.models.CalendarSubtopic;
@@ -99,11 +101,10 @@ public class CalendarController {
 	@GetMapping("/curriculum/{id}")
 	public ResponseEntity<CalendarCurriculum> findCalendarCurriculumById(@PathVariable("id") int id) {
 		CalendarCurriculum calendarCurriculum = calendarService.findCalendarCurriculumById(id);
-		if (calendarCurriculum == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} else {
+		if (calendarCurriculum != null) {
 			return new ResponseEntity<>(calendarCurriculum, HttpStatus.OK);
 		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -119,11 +120,10 @@ public class CalendarController {
 	@GetMapping("/event/{id}")
 	public ResponseEntity<CalendarEvent> findCalendarEventById(@PathVariable("id") int id) {
 		CalendarEvent calendarEvent = calendarService.findCalendarEventById(id);
-		if (calendarEvent == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} else {
+		if (calendarEvent != null) {
 			return new ResponseEntity<>(calendarEvent, HttpStatus.OK);
-		}
+		} 
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -140,11 +140,10 @@ public class CalendarController {
 	@GetMapping("/subtopic/{id}")
 	public ResponseEntity<CalendarSubtopic> findCalendarSubtopicById(@PathVariable("id") int id) {
 		CalendarSubtopic calendarSubtopic = calendarService.findCalendarSubtopicById(id);
-		if (calendarSubtopic == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} else {
+		if (calendarSubtopic != null) {
 			return new ResponseEntity<>(calendarSubtopic, HttpStatus.OK);
-		}
+		} 
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -214,7 +213,10 @@ public class CalendarController {
 	@PutMapping("/curriculum")
 	public ResponseEntity<CalendarCurriculum> updateCalendarCurriculum(@RequestBody CalendarCurriculum updatedCalendarCurriculum) {
 		CalendarCurriculum calendarCurriculum = calendarService.updateCalendarCurriculum(updatedCalendarCurriculum);
-		return new ResponseEntity<>(calendarCurriculum, HttpStatus.OK);
+		if (calendarCurriculum != null) {
+			return new ResponseEntity<>(calendarCurriculum, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -231,7 +233,10 @@ public class CalendarController {
 	@PutMapping("/event")
 	public ResponseEntity<CalendarEvent> updateCalendarEvent(@RequestBody CalendarEvent updatedCalendarEvent) {
 		CalendarEvent calendarEvent = calendarService.updateCalendarEvent(updatedCalendarEvent);
-		return new ResponseEntity<>(calendarEvent, HttpStatus.OK);
+		if (calendarEvent != null) {
+			return new ResponseEntity<>(calendarEvent, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -248,6 +253,9 @@ public class CalendarController {
 	@PutMapping("/subtopic")
 	public ResponseEntity<CalendarSubtopic> updateCalendarSubtopic(@RequestBody CalendarSubtopic updatedCalendarSubtopic) {
 		CalendarSubtopic calendarSubtopic = calendarService.updateCalendarSubtopic(updatedCalendarSubtopic);
-		return new ResponseEntity<>(calendarSubtopic, HttpStatus.OK);
+		if (calendarSubtopic != null) {
+			return new ResponseEntity<>(calendarSubtopic, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 }

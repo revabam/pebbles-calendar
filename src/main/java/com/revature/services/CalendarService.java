@@ -129,22 +129,30 @@ public class CalendarService {
 	 * This method takes a CalendarCurriculum object and updates it in a database.
 	 * 
 	 * @param CalendarCurriculum updatedCalendarCurriculum
-	 * @return CalendarCurriculum
+	 * @return Returns the updated CalendarCurriculum object if the object exists, otherwise returns null 
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarCurriculum updateCalendarCurriculum(CalendarCurriculum updatedCalendarCurriculum) {
-		return calendarCurriculumRepo.save(updatedCalendarCurriculum);
+		CalendarCurriculum calendarCurriculum = calendarCurriculumRepo.findCalendarCurriculumById(updatedCalendarCurriculum.getId());
+		if (calendarCurriculum != null) {
+			return calendarCurriculumRepo.save(updatedCalendarCurriculum);
+		}
+		return null;
 	}
 
 	/**
 	 * This method takes a CalendarEvent object and updates it in a database.
 	 * 
 	 * @param CalendarEvent updatedCalendarEvent
-	 * @return CalendarEvent
+	 * @return Returns the updated CalendarEvent object if the object exists, otherwise returns null
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarEvent updateCalendarEvent(CalendarEvent updatedCalendarEvent) {
-		return calendarEventRepo.save(updatedCalendarEvent);
+		CalendarEvent calendarEvent = calendarEventRepo.findCalendarEventById(updatedCalendarEvent.getId());
+		if (calendarEvent != null) {
+			return calendarEventRepo.save(updatedCalendarEvent);
+		}
+		return null;
 	}
 
 	/**
@@ -155,6 +163,10 @@ public class CalendarService {
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarSubtopic updateCalendarSubtopic(CalendarSubtopic updatedCalendarSubtopic) {
-		return calendarSubtopicRepo.save(updatedCalendarSubtopic);
+		CalendarSubtopic calendarSubtopic = calendarSubtopicRepo.findCalendarSubtopicById(updatedCalendarSubtopic.getId());
+		if (calendarSubtopic != null) {
+			return calendarSubtopicRepo.save(updatedCalendarSubtopic);
+		}
+		return null;
 	}
 }
