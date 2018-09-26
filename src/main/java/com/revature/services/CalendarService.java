@@ -177,16 +177,22 @@ public class CalendarService {
 		return null;
 	}
 	
-	
-	@Scheduled(fixedRate = 1000)
-	public void printTime() {
-		System.out.println(new Date().toString());
 
-	}
 	
-	@Scheduled(cron = "0 51 13 * * ?")
-	public void updateStatus() {
+	@Scheduled(cron = "0 20 14 * * ?")
+	public void updateStatusTimer() {
 		System.out.println(new Date().toString());
 		System.out.println("Scheduled function working");
+		updateStatus();
 	}
+	
+	
+	public void updateStatus() {
+		List<CalendarEvent> events = findAllCalendarEvents();
+		for (CalendarEvent event : events) {
+			event.setStatusId(4);
+			updateCalendarEvent(event);
+		}
+	}
+	
 }
