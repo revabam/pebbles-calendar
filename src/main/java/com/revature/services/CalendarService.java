@@ -176,23 +176,37 @@ public class CalendarService {
 		}
 		return null;
 	}
-	
 
-	
-	@Scheduled(cron = "0 20 14 * * ?")
+	/**
+	 * This method is a scheduled task. It will only run a specified method and then
+	 * will call a method to update the status of calendar events
+	 * 
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
+	@Scheduled(cron = "0 44 14 * * ?")
 	public void updateStatusTimer() {
 		System.out.println(new Date().toString());
 		System.out.println("Scheduled function working");
 		updateStatus();
 	}
-	
-	
+
+	/**
+	 * This method will update the status of a calendar event It will update the
+	 * status of all events with an end date before the current date that have a
+	 * status of pending into a status of missed
+	 * 
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
 	public void updateStatus() {
 		List<CalendarEvent> events = findAllCalendarEvents();
 		for (CalendarEvent event : events) {
-			event.setStatusId(4);
-			updateCalendarEvent(event);
+			System.out.println(event.getEndDateTime().toString());
+			if (event.getEndDateTime().before(new Date()) && event.getStatusId() == 1) {
+				event.setStatusId(4);
+				updateCalendarEvent(event);
+			}
+
 		}
 	}
-	
+
 }
