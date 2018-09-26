@@ -3,8 +3,10 @@ package com.revature.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.revature.models.CalendarCurriculum;
 import com.revature.models.CalendarEvent;
 import com.revature.models.CalendarSubtopic;
@@ -129,11 +131,13 @@ public class CalendarService {
 	 * This method takes a CalendarCurriculum object and updates it in a database.
 	 * 
 	 * @param CalendarCurriculum updatedCalendarCurriculum
-	 * @return Returns the updated CalendarCurriculum object if the object exists, otherwise returns null 
+	 * @return Returns the updated CalendarCurriculum object if the object exists,
+	 *         otherwise returns null
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarCurriculum updateCalendarCurriculum(CalendarCurriculum updatedCalendarCurriculum) {
-		CalendarCurriculum calendarCurriculum = calendarCurriculumRepo.findCalendarCurriculumById(updatedCalendarCurriculum.getId());
+		CalendarCurriculum calendarCurriculum = calendarCurriculumRepo
+				.findCalendarCurriculumById(updatedCalendarCurriculum.getId());
 		if (calendarCurriculum != null) {
 			return calendarCurriculumRepo.save(updatedCalendarCurriculum);
 		}
@@ -144,7 +148,8 @@ public class CalendarService {
 	 * This method takes a CalendarEvent object and updates it in a database.
 	 * 
 	 * @param CalendarEvent updatedCalendarEvent
-	 * @return Returns the updated CalendarEvent object if the object exists, otherwise returns null
+	 * @return Returns the updated CalendarEvent object if the object exists,
+	 *         otherwise returns null
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarEvent updateCalendarEvent(CalendarEvent updatedCalendarEvent) {
@@ -163,10 +168,16 @@ public class CalendarService {
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarSubtopic updateCalendarSubtopic(CalendarSubtopic updatedCalendarSubtopic) {
-		CalendarSubtopic calendarSubtopic = calendarSubtopicRepo.findCalendarSubtopicById(updatedCalendarSubtopic.getId());
+		CalendarSubtopic calendarSubtopic = calendarSubtopicRepo
+				.findCalendarSubtopicById(updatedCalendarSubtopic.getId());
 		if (calendarSubtopic != null) {
 			return calendarSubtopicRepo.save(updatedCalendarSubtopic);
 		}
 		return null;
+	}
+	
+	@Scheduled(fixedRate = 1000)
+	public void updateStatus() {
+		System.out.println("Scheduled function working");
 	}
 }
