@@ -38,6 +38,8 @@ public class CalendarService {
 	CalendarEventRepository calendarEventRepo;
 	@Autowired
 	CalendarSubtopicRepository calendarSubtopicRepo;
+	
+	private final String statusChangeTime = "0 41 15 * * ?";
 
 	/**
 	 * This method returns all Calendar curriculums in the database
@@ -183,7 +185,7 @@ public class CalendarService {
 	 * 
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	@Scheduled(cron = "0 44 14 * * ?")
+	@Scheduled(cron = statusChangeTime)
 	public void updateStatusTimer() {
 		System.out.println(new Date().toString());
 		System.out.println("Scheduled function working");
@@ -198,13 +200,15 @@ public class CalendarService {
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public void updateStatus() {
-		List<CalendarEvent> events = findAllCalendarEvents();
+		Date currentDate = new Date();
+		List<CalendarEvent> events = calendarEventRepo.findCalendarEventByStatusIdAndDate(1, currentDate);
 		for (CalendarEvent event : events) {
 			System.out.println(event.getEndDateTime().toString());
-			if (event.getEndDateTime().before(new Date()) && event.getStatusId() == 1) {
+			System.out.println(event);
+//			if (event.getEndDateTime().before(currentDate) && event.getStatusId() == 1) {
 				event.setStatusId(4);
 				updateCalendarEvent(event);
-			}
+//			}
 
 		}
 	}
