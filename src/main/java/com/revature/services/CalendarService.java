@@ -39,7 +39,9 @@ public class CalendarService {
 	@Autowired
 	CalendarSubtopicRepository calendarSubtopicRepo;
 	
-	private final String statusChangeTime = "0 41 15 * * ?";
+	//This is the time when an event status will be changed from planned to missed
+	//String formated "second minute hour"
+	private final String statusChangeTime = "0 0 04 * * ?";
 
 	/**
 	 * This method returns all Calendar curriculums in the database
