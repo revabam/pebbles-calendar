@@ -38,9 +38,9 @@ public class CalendarService {
 	CalendarEventRepository calendarEventRepo;
 	@Autowired
 	CalendarSubtopicRepository calendarSubtopicRepo;
-	
-	//This is the time when an event status will be changed from planned to missed
-	//String formated "second minute hour"
+
+	// This is the time when an event status will be changed from planned to missed
+	// String formated "second minute hour"
 	private final String statusChangeTime = "0 0 04 * * ?";
 
 	/**
@@ -207,11 +207,8 @@ public class CalendarService {
 		for (CalendarEvent event : events) {
 			System.out.println(event.getEndDateTime().toString());
 			System.out.println(event);
-//			if (event.getEndDateTime().before(currentDate) && event.getStatusId() == 1) {
-				event.setStatusId(4);
-				updateCalendarEvent(event);
-//			}
-
+			event.setStatusId(4);
+			updateCalendarEvent(event);
 		}
 	}
 
