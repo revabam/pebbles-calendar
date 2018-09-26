@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -176,8 +177,16 @@ public class CalendarService {
 		return null;
 	}
 	
+	
 	@Scheduled(fixedRate = 1000)
+	public void printTime() {
+		System.out.println(new Date().toString());
+
+	}
+	
+	@Scheduled(cron = "0 51 13 * * ?")
 	public void updateStatus() {
+		System.out.println(new Date().toString());
 		System.out.println("Scheduled function working");
 	}
 }
