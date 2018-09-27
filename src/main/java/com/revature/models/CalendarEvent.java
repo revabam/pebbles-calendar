@@ -54,11 +54,14 @@ public class CalendarEvent implements Serializable {
 	@Column(name = "subtopic_id")
 	private int subTopicId;
 
+	@Column(name = "flagged_id")
+	private int flaggedId;
+
 	public CalendarEvent() {
 	}
 
 	public CalendarEvent(int id, String title, String description, int statusId, Date startDateTime, Date endDateTime,
-			int trainerId, int subTopicId) {
+			int trainerId, int subTopicId, int flaggedId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -68,10 +71,11 @@ public class CalendarEvent implements Serializable {
 		this.endDateTime = endDateTime;
 		this.trainerId = trainerId;
 		this.subTopicId = subTopicId;
+		this.flaggedId = flaggedId;
 	}
 
 	public CalendarEvent(String title, String description, int statusId, Date startDateTime, Date endDateTime,
-			int trainerId, int subTopicId) {
+			int trainerId, int subTopicId, int flaggedId) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -80,7 +84,10 @@ public class CalendarEvent implements Serializable {
 		this.endDateTime = endDateTime;
 		this.trainerId = trainerId;
 		this.subTopicId = subTopicId;
+		this.flaggedId = flaggedId;
 	}
+	
+	
 
 	public int getId() {
 		return id;
@@ -146,12 +153,21 @@ public class CalendarEvent implements Serializable {
 		this.subTopicId = subTopicId;
 	}
 
+	public int getFlaggedId() {
+		return flaggedId;
+	}
+
+	public void setFlaggedId(int flaggedId) {
+		this.flaggedId = flaggedId;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDateTime == null) ? 0 : endDateTime.hashCode());
+		result = prime * result + flaggedId;
 		result = prime * result + id;
 		result = prime * result + ((startDateTime == null) ? 0 : startDateTime.hashCode());
 		result = prime * result + statusId;
@@ -180,6 +196,8 @@ public class CalendarEvent implements Serializable {
 				return false;
 		} else if (!endDateTime.equals(other.endDateTime))
 			return false;
+		if (flaggedId != other.flaggedId)
+			return false;
 		if (id != other.id)
 			return false;
 		if (startDateTime == null) {
@@ -205,7 +223,7 @@ public class CalendarEvent implements Serializable {
 	public String toString() {
 		return "CalendarEvent [id=" + id + ", title=" + title + ", description=" + description + ", statusId="
 				+ statusId + ", startDateTime=" + startDateTime + ", endDateTime=" + endDateTime + ", trainerId="
-				+ trainerId + ", subTopicId=" + subTopicId + "]";
+				+ trainerId + ", subTopicId=" + subTopicId + ", flaggedId=" + flaggedId + "]";
 	}
 
 }

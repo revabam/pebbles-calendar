@@ -66,13 +66,15 @@ public class CalendarService {
 	
 
 	/**
-	 * This method takes a CalendarEvent object and persists it to a database.
+	 * This method takes a list of CalendarEvent objects and persists them to a database.
+	 * If the event already exists its information will be updated in the database
 	 * 
 	 * @param CalendarEvent newCalendarEvent
-	 * @return CalenderEvent
+	 * @return List<CalenderEvent>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	public CalendarEvent addCalendarEvent(CalendarEvent newCalendarEvent) {
-		return calendarEventRepo.save(newCalendarEvent);
+	public List<CalendarEvent> addCalendarEvent(List<CalendarEvent> events) {
+		return calendarEventRepo.save(events);
 	}
 
 	/**

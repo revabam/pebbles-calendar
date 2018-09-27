@@ -15,6 +15,7 @@ start_date_time TIMESTAMP,
 end_date_time TIMESTAMP,
 trainer_id INTEGER NOT NULL,
 subtopic_id INTEGER NOT NULL,
+flagged_id INTEGER,
 PRIMARY KEY (id),
 foreign key (status_id) references status(id));
 
