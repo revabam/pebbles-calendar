@@ -24,8 +24,7 @@ import com.revature.repositories.CalendarSubtopicRepository;
  * database. The methods in this class are called from the CalendarController
  * class methods. They call repository methods to carry out CRUD functionality.
  * 
- * @author author Derek Loisel batch 1806-jun18-usf-java trainer Wezley
- *         Singleton
+ * @author Derek Loisel, Batch: 1806-jun18-usf-java, Trainer: Wezley Singleton
  */
 
 @Service

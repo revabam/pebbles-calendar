@@ -17,8 +17,7 @@ import com.revature.models.CalendarEvent;
  * or use the built-in JPA methods available by extending the JPA repository
  * such as findAll() and save().
  * 
- * @author author Derek Loisel batch 1806-jun18-usf-java trainer Wezley
- *         Singleton
+ * @author Derek Loisel, Batch: 1806-jun18-usf-java, Trainer: Wezley Singleton
  */
 @Repository
 public interface CalendarEventRepository extends JpaRepository<CalendarEvent, Integer> {
