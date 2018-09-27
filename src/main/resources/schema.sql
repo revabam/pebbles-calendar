@@ -8,8 +8,8 @@ PRIMARY KEY (id));
 DROP TABLE IF EXISTS calendar_event CASCADE;
 CREATE TABLE IF NOT EXISTS calendar_event
 (id INTEGER NOT NULL,
-title VARCHAR(50) NOT NULL,
-description VARCHAR(250) NOT NULL,
+title VARCHAR(4000) NOT NULL,
+description VARCHAR(4000) NOT NULL,
 status_id INTEGER,
 start_date_time TIMESTAMP,
 end_date_time TIMESTAMP,
