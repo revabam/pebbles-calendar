@@ -8,12 +8,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.models.CalendarCurriculum;
 import com.revature.models.CalendarEvent;
-import com.revature.models.CalendarSubtopic;
-import com.revature.repositories.CalendarCurriculumRepository;
 import com.revature.repositories.CalendarEventRepository;
-import com.revature.repositories.CalendarSubtopicRepository;
 
 /**
  * This is the service that calls repository methods from
@@ -32,24 +28,11 @@ import com.revature.repositories.CalendarSubtopicRepository;
 public class CalendarService {
 
 	@Autowired
-	CalendarCurriculumRepository calendarCurriculumRepo;
-	@Autowired
 	CalendarEventRepository calendarEventRepo;
-	@Autowired
-	CalendarSubtopicRepository calendarSubtopicRepo;
 
 	// This is the time when an event status will be changed from planned to missed
 	// String formated "second minute hour"
 	private final String statusChangeTime = "0 0 04 * * ?";
-
-	/**
-	 * This method returns all Calendar curriculums in the database
-	 * 
-	 * @return List<CalendarCurriculum> a list of all curriculum
-	 */
-	public List<CalendarCurriculum> findAllCalendarCurriculums() {
-		return calendarCurriculumRepo.findAll();
-	}
 
 	/**
 	 * This method Returns all Calendar events in the database
@@ -61,26 +44,6 @@ public class CalendarService {
 	}
 
 	/**
-	 * This method Returns all Calendar subtopics in the database
-	 * 
-	 * @return List<CalendarSubtopic> a list of all calendar subtopics
-	 */
-	public List<CalendarSubtopic> findAllCalendarSubtopics() {
-		return calendarSubtopicRepo.findAll();
-	}
-
-	/**
-	 * This method Returns the calendar curriculum that corresponds with the id
-	 * parameter
-	 * 
-	 * @param int id
-	 * @return CalendarCurriculum
-	 */
-	public CalendarCurriculum findCalendarCurriculumById(Integer id) {
-		return calendarCurriculumRepo.findCalendarCurriculumById(id);
-	}
-
-	/**
 	 * This method Returns the calendar event that corresponds with the id parameter
 	 * 
 	 * @param int id
@@ -89,27 +52,18 @@ public class CalendarService {
 	public CalendarEvent findCalendarEventById(Integer id) {
 		return calendarEventRepo.findCalendarEventById(id);
 	}
-
+	
 	/**
-	 * This method Returns the calendar subtopic that corresponds with the id
-	 * parameter
+	 * This method returns a list of calendar events from the database based on the trainer id
 	 * 
 	 * @param int id
-	 * @return CalendarSubtopic
+	 * @return List<CalendarEvent>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	public CalendarSubtopic findCalendarSubtopicById(Integer id) {
-		return calendarSubtopicRepo.findCalendarSubtopicById(id);
+	public List<CalendarEvent> findCalendarEventByTrainerId(int id){
+		return calendarEventRepo.findCalendarEventByTrainerId(id);
 	}
-
-	/**
-	 * This method takes a CalendarCurriculum object and persists it to a database.
-	 * 
-	 * @param CalendarCurriculum newCalendarCurriculum
-	 * @return Calendar
-	 */
-	public CalendarCurriculum addCalendarCurriculum(CalendarCurriculum newCalendarCurriculum) {
-		return calendarCurriculumRepo.save(newCalendarCurriculum);
-	}
+	
 
 	/**
 	 * This method takes a CalendarEvent object and persists it to a database.
@@ -119,33 +73,6 @@ public class CalendarService {
 	 */
 	public CalendarEvent addCalendarEvent(CalendarEvent newCalendarEvent) {
 		return calendarEventRepo.save(newCalendarEvent);
-	}
-
-	/**
-	 * This method takes a CalendarSubtopic object and persists it to a database.
-	 * 
-	 * @param CalendarSubtopic newCalendarSubtopic
-	 * @return CalenderSubtopic
-	 */
-	public CalendarSubtopic addCalendarSubtopic(CalendarSubtopic newCalendarSubtopic) {
-		return calendarSubtopicRepo.save(newCalendarSubtopic);
-	}
-
-	/**
-	 * This method takes a CalendarCurriculum object and updates it in a database.
-	 * 
-	 * @param CalendarCurriculum updatedCalendarCurriculum
-	 * @return Returns the updated CalendarCurriculum object if the object exists,
-	 *         otherwise returns null
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
-	 */
-	public CalendarCurriculum updateCalendarCurriculum(CalendarCurriculum updatedCalendarCurriculum) {
-		CalendarCurriculum calendarCurriculum = calendarCurriculumRepo
-				.findCalendarCurriculumById(updatedCalendarCurriculum.getId());
-		if (calendarCurriculum != null) {
-			return calendarCurriculumRepo.save(updatedCalendarCurriculum);
-		}
-		return null;
 	}
 
 	/**
@@ -160,22 +87,6 @@ public class CalendarService {
 		CalendarEvent calendarEvent = calendarEventRepo.findCalendarEventById(updatedCalendarEvent.getId());
 		if (calendarEvent != null) {
 			return calendarEventRepo.save(updatedCalendarEvent);
-		}
-		return null;
-	}
-
-	/**
-	 * This method takes a CalendarSubtopic object and updates it in a database.
-	 * 
-	 * @param CalendarSubtopic updatedCalendarSubtopic
-	 * @return CalendarSubtopic
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
-	 */
-	public CalendarSubtopic updateCalendarSubtopic(CalendarSubtopic updatedCalendarSubtopic) {
-		CalendarSubtopic calendarSubtopic = calendarSubtopicRepo
-				.findCalendarSubtopicById(updatedCalendarSubtopic.getId());
-		if (calendarSubtopic != null) {
-			return calendarSubtopicRepo.save(updatedCalendarSubtopic);
 		}
 		return null;
 	}
