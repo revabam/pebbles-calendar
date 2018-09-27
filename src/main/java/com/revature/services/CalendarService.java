@@ -1,10 +1,13 @@
 package com.revature.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.revature.models.CalendarCurriculum;
 import com.revature.models.CalendarEvent;
 import com.revature.models.CalendarSubtopic;
@@ -21,8 +24,7 @@ import com.revature.repositories.CalendarSubtopicRepository;
  * database. The methods in this class are called from the CalendarController
  * class methods. They call repository methods to carry out CRUD functionality.
  * 
- * @author author Derek Loisel batch 1806-jun18-usf-java trainer Wezley
- *         Singleton
+ * @author Derek Loisel, Batch: 1806-jun18-usf-java, Trainer: Wezley Singleton
  */
 
 @Service
@@ -35,6 +37,10 @@ public class CalendarService {
 	CalendarEventRepository calendarEventRepo;
 	@Autowired
 	CalendarSubtopicRepository calendarSubtopicRepo;
+
+	// This is the time when an event status will be changed from planned to missed
+	// String formated "second minute hour"
+	private final String statusChangeTime = "0 0 04 * * ?";
 
 	/**
 	 * This method returns all Calendar curriculums in the database
@@ -129,11 +135,13 @@ public class CalendarService {
 	 * This method takes a CalendarCurriculum object and updates it in a database.
 	 * 
 	 * @param CalendarCurriculum updatedCalendarCurriculum
-	 * @return Returns the updated CalendarCurriculum object if the object exists, otherwise returns null 
+	 * @return Returns the updated CalendarCurriculum object if the object exists,
+	 *         otherwise returns null
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarCurriculum updateCalendarCurriculum(CalendarCurriculum updatedCalendarCurriculum) {
-		CalendarCurriculum calendarCurriculum = calendarCurriculumRepo.findCalendarCurriculumById(updatedCalendarCurriculum.getId());
+		CalendarCurriculum calendarCurriculum = calendarCurriculumRepo
+				.findCalendarCurriculumById(updatedCalendarCurriculum.getId());
 		if (calendarCurriculum != null) {
 			return calendarCurriculumRepo.save(updatedCalendarCurriculum);
 		}
@@ -144,7 +152,8 @@ public class CalendarService {
 	 * This method takes a CalendarEvent object and updates it in a database.
 	 * 
 	 * @param CalendarEvent updatedCalendarEvent
-	 * @return Returns the updated CalendarEvent object if the object exists, otherwise returns null
+	 * @return Returns the updated CalendarEvent object if the object exists,
+	 *         otherwise returns null
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarEvent updateCalendarEvent(CalendarEvent updatedCalendarEvent) {
@@ -163,10 +172,43 @@ public class CalendarService {
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	public CalendarSubtopic updateCalendarSubtopic(CalendarSubtopic updatedCalendarSubtopic) {
-		CalendarSubtopic calendarSubtopic = calendarSubtopicRepo.findCalendarSubtopicById(updatedCalendarSubtopic.getId());
+		CalendarSubtopic calendarSubtopic = calendarSubtopicRepo
+				.findCalendarSubtopicById(updatedCalendarSubtopic.getId());
 		if (calendarSubtopic != null) {
 			return calendarSubtopicRepo.save(updatedCalendarSubtopic);
 		}
 		return null;
 	}
+
+	/**
+	 * This method is a scheduled task. It will only run a specified method and then
+	 * will call a method to update the status of calendar events
+	 * 
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
+	@Scheduled(cron = statusChangeTime)
+	public void updateStatusTimer() {
+		System.out.println(new Date().toString());
+		System.out.println("Scheduled function working");
+		updateStatus();
+	}
+
+	/**
+	 * This method will update the status of a calendar event It will update the
+	 * status of all events with an end date before the current date that have a
+	 * status of pending into a status of missed
+	 * 
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
+	public void updateStatus() {
+		Date currentDate = new Date();
+		List<CalendarEvent> events = calendarEventRepo.findCalendarEventByStatusIdAndDate(1, currentDate);
+		for (CalendarEvent event : events) {
+			System.out.println(event.getEndDateTime().toString());
+			System.out.println(event);
+			event.setStatusId(4);
+			updateCalendarEvent(event);
+		}
+	}
+
 }

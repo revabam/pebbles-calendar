@@ -18,10 +18,16 @@ values(2, 2, 1);
 merge data into the status lookup table
 */
 merge into status (id, status)
-values(1, 'active');
+values(1, 'planned');
 
 merge into status (id, status)
-values(2, 'inactive');
+values(2, 'completed');
+
+merge into status (id, status)
+values(3, 'cancelled');
+
+merge into status (id, status)
+values(4, 'missed');
 
 /*
 merge mock data into the calendar_event table
