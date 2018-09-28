@@ -50,6 +50,9 @@ public class CalendarEvent implements Serializable {
 	@Column(name = "trainer_id")
 	private int trainerId;
 
+	@Column(name = "batch_id")
+	private int batchId;
+
 	@NotNull
 	@Column(name = "subtopic_id")
 	private int subTopicId;
@@ -61,7 +64,7 @@ public class CalendarEvent implements Serializable {
 	}
 
 	public CalendarEvent(int id, String title, String description, int statusId, Date startDateTime, Date endDateTime,
-			int trainerId, int subTopicId, int flaggedId) {
+			int trainerId, int batchId, int subTopicId, int flaggedId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -70,12 +73,13 @@ public class CalendarEvent implements Serializable {
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
 		this.trainerId = trainerId;
+		this.batchId = batchId;
 		this.subTopicId = subTopicId;
 		this.flaggedId = flaggedId;
 	}
 
 	public CalendarEvent(String title, String description, int statusId, Date startDateTime, Date endDateTime,
-			int trainerId, int subTopicId, int flaggedId) {
+			int trainerId, int batchId, int subTopicId, int flaggedId) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -83,11 +87,10 @@ public class CalendarEvent implements Serializable {
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
 		this.trainerId = trainerId;
+		this.batchId = batchId;
 		this.subTopicId = subTopicId;
 		this.flaggedId = flaggedId;
 	}
-	
-	
 
 	public int getId() {
 		return id;
@@ -145,6 +148,14 @@ public class CalendarEvent implements Serializable {
 		this.trainerId = trainerId;
 	}
 
+	public int getBatchId() {
+		return batchId;
+	}
+
+	public void setBatchId(int batchId) {
+		this.batchId = batchId;
+	}
+
 	public int getSubTopicId() {
 		return subTopicId;
 	}
@@ -165,6 +176,7 @@ public class CalendarEvent implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + batchId;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDateTime == null) ? 0 : endDateTime.hashCode());
 		result = prime * result + flaggedId;
@@ -186,6 +198,8 @@ public class CalendarEvent implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CalendarEvent other = (CalendarEvent) obj;
+		if (batchId != other.batchId)
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
@@ -223,7 +237,7 @@ public class CalendarEvent implements Serializable {
 	public String toString() {
 		return "CalendarEvent [id=" + id + ", title=" + title + ", description=" + description + ", statusId="
 				+ statusId + ", startDateTime=" + startDateTime + ", endDateTime=" + endDateTime + ", trainerId="
-				+ trainerId + ", subTopicId=" + subTopicId + ", flaggedId=" + flaggedId + "]";
+				+ trainerId + ", batchId=" + batchId + ", subTopicId=" + subTopicId + ", flaggedId=" + flaggedId + "]";
 	}
 
 }
