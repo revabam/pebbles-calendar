@@ -47,14 +47,24 @@ public class CalendarEvent implements Serializable {
 	private Date endDateTime;
 
 	@NotNull
-	@Column(name = "calendar_subtopic_id")
-	private int calendarSubtopicId;
+	@Column(name = "trainer_id")
+	private int trainerId;
+
+	@Column(name = "batch_id")
+	private int batchId;
+
+	@NotNull
+	@Column(name = "subtopic_id")
+	private int subTopicId;
+
+	@Column(name = "flagged_id")
+	private int flaggedId;
 
 	public CalendarEvent() {
 	}
 
 	public CalendarEvent(int id, String title, String description, int statusId, Date startDateTime, Date endDateTime,
-			int calendarSubtopicId) {
+			int trainerId, int batchId, int subTopicId, int flaggedId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -62,18 +72,24 @@ public class CalendarEvent implements Serializable {
 		this.statusId = statusId;
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
-		this.calendarSubtopicId = calendarSubtopicId;
+		this.trainerId = trainerId;
+		this.batchId = batchId;
+		this.subTopicId = subTopicId;
+		this.flaggedId = flaggedId;
 	}
 
 	public CalendarEvent(String title, String description, int statusId, Date startDateTime, Date endDateTime,
-			int calendarSubtopicId) {
+			int trainerId, int batchId, int subTopicId, int flaggedId) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.statusId = statusId;
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
-		this.calendarSubtopicId = calendarSubtopicId;
+		this.trainerId = trainerId;
+		this.batchId = batchId;
+		this.subTopicId = subTopicId;
+		this.flaggedId = flaggedId;
 	}
 
 	public int getId() {
@@ -124,25 +140,52 @@ public class CalendarEvent implements Serializable {
 		this.endDateTime = endDateTime;
 	}
 
-	public int getCalendarSubtopicId() {
-		return calendarSubtopicId;
+	public int getTrainerId() {
+		return trainerId;
 	}
 
-	public void setCalendarSubtopicId(int calendarSubtopicId) {
-		this.calendarSubtopicId = calendarSubtopicId;
+	public void setTrainerId(int trainerId) {
+		this.trainerId = trainerId;
+	}
+
+	public int getBatchId() {
+		return batchId;
+	}
+
+	public void setBatchId(int batchId) {
+		this.batchId = batchId;
+	}
+
+	public int getSubTopicId() {
+		return subTopicId;
+	}
+
+	public void setSubTopicId(int subTopicId) {
+		this.subTopicId = subTopicId;
+	}
+
+	public int getFlaggedId() {
+		return flaggedId;
+	}
+
+	public void setFlaggedId(int flaggedId) {
+		this.flaggedId = flaggedId;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + calendarSubtopicId;
+		result = prime * result + batchId;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDateTime == null) ? 0 : endDateTime.hashCode());
+		result = prime * result + flaggedId;
 		result = prime * result + id;
 		result = prime * result + ((startDateTime == null) ? 0 : startDateTime.hashCode());
 		result = prime * result + statusId;
+		result = prime * result + subTopicId;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + trainerId;
 		return result;
 	}
 
@@ -155,7 +198,7 @@ public class CalendarEvent implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CalendarEvent other = (CalendarEvent) obj;
-		if (calendarSubtopicId != other.calendarSubtopicId)
+		if (batchId != other.batchId)
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -167,6 +210,8 @@ public class CalendarEvent implements Serializable {
 				return false;
 		} else if (!endDateTime.equals(other.endDateTime))
 			return false;
+		if (flaggedId != other.flaggedId)
+			return false;
 		if (id != other.id)
 			return false;
 		if (startDateTime == null) {
@@ -176,10 +221,14 @@ public class CalendarEvent implements Serializable {
 			return false;
 		if (statusId != other.statusId)
 			return false;
+		if (subTopicId != other.subTopicId)
+			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
 		} else if (!title.equals(other.title))
+			return false;
+		if (trainerId != other.trainerId)
 			return false;
 		return true;
 	}
@@ -187,8 +236,8 @@ public class CalendarEvent implements Serializable {
 	@Override
 	public String toString() {
 		return "CalendarEvent [id=" + id + ", title=" + title + ", description=" + description + ", statusId="
-				+ statusId + ", startDateTime=" + startDateTime + ", endDateTime=" + endDateTime
-				+ ", calendarSubtopicId=" + calendarSubtopicId + "]";
+				+ statusId + ", startDateTime=" + startDateTime + ", endDateTime=" + endDateTime + ", trainerId="
+				+ trainerId + ", batchId=" + batchId + ", subTopicId=" + subTopicId + ", flaggedId=" + flaggedId + "]";
 	}
 
 }

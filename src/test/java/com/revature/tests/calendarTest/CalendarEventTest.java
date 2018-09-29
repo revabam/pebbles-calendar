@@ -34,23 +34,5 @@ public class CalendarEventTest extends TestDriver {
 		assertEquals(1, calendarEventId);
 	}
 
-	@Test
-	public void canAddCalendarEvent() {
-		CalendarEvent newCalendarEvent = new CalendarEvent(3, "Polymorphism event",
-				"This is Polymorphism event from the Polymorphism subtopic in the Core Java topic", 1,
-				new Date(1637224472690l), new Date(1937224472690l), 2);
-		int status = RestAssured.given().contentType("application/json").body(newCalendarEvent).post(url + "/events")
-				.getStatusCode();
-		assertEquals(201, status);
-	}
 
-	@Test
-	public void canUpdateCalendarEvent() {
-		CalendarEvent updatedCalendarEvent = new CalendarEvent(2, "Polymorphism event",
-				"This is Polymorphism event from the Polymorphism subtopic in the Core Java topic", 1,
-				new Date(1637224472690l), new Date(2037224472690l), 2);
-		CalendarEvent calendarEvent = RestAssured.given().contentType("application/json").body(updatedCalendarEvent)
-				.put(url + "/events").as(CalendarEvent.class);
-		assertEquals(updatedCalendarEvent, calendarEvent);
-	}
 }
