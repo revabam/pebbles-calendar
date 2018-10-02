@@ -32,7 +32,7 @@ public class CalendarService {
 
 	// This is the time when an event status will be changed from planned to missed
 	// String formated "second minute hour"
-	private final String statusChangeTime = "0 23 13 * * ?";
+	private final String statusChangeTime = "0 0 24 * * ?";
 
 	/**
 	 * This method Returns all Calendar events in the database
