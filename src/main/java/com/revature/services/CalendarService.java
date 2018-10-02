@@ -32,7 +32,7 @@ public class CalendarService {
 
 	// This is the time when an event status will be changed from planned to missed
 	// String formated "second minute hour"
-	private final String statusChangeTime = "0 0 24 * * ?";
+	private final String statusChangeTime = "0 0 1 * * ?";
 
 	/**
 	 * This method Returns all Calendar events in the database
@@ -41,6 +41,16 @@ public class CalendarService {
 	 */
 	public List<CalendarEvent> findAllCalendarEvents() {
 		return calendarEventRepo.findAll();
+	}
+	
+	/**
+	 * This method returns a list of all custom calendar events
+	 * 
+	 * @return List<CalendarEvent>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
+	public List<CalendarEvent> findAllCustomEvents() {
+		return calendarEventRepo.findCalendarEventBySubTopicId(-1);
 	}
 
 	/**
