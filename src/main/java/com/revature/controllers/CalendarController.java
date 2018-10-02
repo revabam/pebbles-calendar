@@ -95,7 +95,7 @@ public class CalendarController {
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@PostMapping("/event")
-	public ResponseEntity<List<CalendarEvent>> addCalendarEvent(@Valid @RequestBody List<CalendarEvent> events) {
+	public ResponseEntity<List<CalendarEvent>> addCalendarEvent(@RequestBody List<CalendarEvent> events) {
 		List<CalendarEvent> calendarEvent = calendarService.addCalendarEvent(events);
 		return new ResponseEntity<>(calendarEvent, HttpStatus.CREATED);
 	}

@@ -22,10 +22,32 @@ import com.revature.models.CalendarEvent;
 @Repository
 public interface CalendarEventRepository extends JpaRepository<CalendarEvent, Integer> {
 
+	/**
+	 * This method finds a calendar event by the given calendar id
+	 * 
+	 * @param int id
+	 * @return Calendar Event
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
 	CalendarEvent findCalendarEventById(int id);
 	
+	/**
+	 * This method returns a list of calendar event corresponding with the given trainer id
+	 * 
+	 * @param int trainerId
+	 * @return List<CalendarEvent>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
 	List<CalendarEvent> findCalendarEventByTrainerId(int trainerId);
 
+	/**
+	 * This method pulls all calendar events with the given status and an end date before the given date from the database
+	 * 
+	 * @param int statusId
+	 * @param Date currentDate
+	 * @return List<CalendarEvent>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
 	@Query("SELECT c FROM CalendarEvent c WHERE c.endDateTime <= :currentDate AND c.statusId = :statusId")
 	List<CalendarEvent> findCalendarEventByStatusIdAndDate(@Param("statusId") int statusId, @Param("currentDate") Date currentDate);
 
