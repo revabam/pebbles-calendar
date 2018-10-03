@@ -59,7 +59,7 @@ public class CalendarService {
 	 * @param int id
 	 * @return CalendarEvent
 	 */
-	public CalendarEvent findCalendarEventById(Integer id) {
+	public CalendarEvent findCalendarEventById(int id) {
 		return calendarEventRepo.findCalendarEventById(id);
 	}
 	
@@ -70,7 +70,7 @@ public class CalendarService {
 	 * @return List<CalendarEvent>
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
-	public List<CalendarEvent> findCalendarEventByTrainerId(int id){
+	public List<CalendarEvent> findCalendarEventByTrainerId(String id){
 		return calendarEventRepo.findCalendarEventByTrainerId(id);
 	}
 	
