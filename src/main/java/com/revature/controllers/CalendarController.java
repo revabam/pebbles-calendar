@@ -52,6 +52,19 @@ public class CalendarController {
 		List<CalendarEvent> allCalendarEvents = calendarService.findAllCalendarEvents();
 		return new ResponseEntity<>(allCalendarEvents, HttpStatus.OK);
 	}
+	
+	/**
+	 * This method returns all the custom calendar events
+	 * 
+	 * @return Returns a response entity containing a list of all custom calendar events
+	 *         and an http status code
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey     
+	 */
+	@GetMapping("/event/custom")
+	public ResponseEntity<List<CalendarEvent>> findAllCustomEvents() {
+		List<CalendarEvent> customEvents = calendarService.findAllCustomEvents();
+		return new ResponseEntity<> (customEvents, HttpStatus.OK);
+	}
 
 	/**
 	 * This method Returns the calendar event that corresponds with the id parameter
@@ -95,7 +108,7 @@ public class CalendarController {
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@PostMapping("/event")
-	public ResponseEntity<List<CalendarEvent>> addCalendarEvent(@Valid @RequestBody List<CalendarEvent> events) {
+	public ResponseEntity<List<CalendarEvent>> addCalendarEvent(@RequestBody List<CalendarEvent> events) {
 		List<CalendarEvent> calendarEvent = calendarService.addCalendarEvent(events);
 		return new ResponseEntity<>(calendarEvent, HttpStatus.CREATED);
 	}

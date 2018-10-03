@@ -32,7 +32,7 @@ public class CalendarService {
 
 	// This is the time when an event status will be changed from planned to missed
 	// String formated "second minute hour"
-	private final String statusChangeTime = "0 0 04 * * ?";
+	private final String statusChangeTime = "0 0 1 * * ?";
 
 	/**
 	 * This method Returns all Calendar events in the database
@@ -41,6 +41,16 @@ public class CalendarService {
 	 */
 	public List<CalendarEvent> findAllCalendarEvents() {
 		return calendarEventRepo.findAll();
+	}
+	
+	/**
+	 * This method returns a list of all custom calendar events
+	 * 
+	 * @return List<CalendarEvent>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
+	public List<CalendarEvent> findAllCustomEvents() {
+		return calendarEventRepo.findCalendarEventBySubTopicId(-1);
 	}
 
 	/**
@@ -94,15 +104,13 @@ public class CalendarService {
 	}
 
 	/**
-	 * This method is a scheduled task. It will only run a specified method and then
+	 * This method is a scheduled task. It will run at the specified time and
 	 * will call a method to update the status of calendar events
 	 * 
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@Scheduled(cron = statusChangeTime)
 	public void updateStatusTimer() {
-		System.out.println(new Date().toString());
-		System.out.println("Scheduled function working");
 		updateStatus();
 	}
 
@@ -117,8 +125,6 @@ public class CalendarService {
 		Date currentDate = new Date();
 		List<CalendarEvent> events = calendarEventRepo.findCalendarEventByStatusIdAndDate(1, currentDate);
 		for (CalendarEvent event : events) {
-			System.out.println(event.getEndDateTime().toString());
-			System.out.println(event);
 			event.setStatusId(4);
 			updateCalendarEvent(event);
 		}
