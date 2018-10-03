@@ -39,7 +39,7 @@ public interface CalendarEventRepository extends JpaRepository<CalendarEvent, In
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	List<CalendarEvent> findCalendarEventByTrainerId(String trainerId);
-
+	
 	/**
 	 * This method finds calendar events by subtopic id
 	 * 
