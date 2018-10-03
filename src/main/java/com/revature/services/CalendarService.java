@@ -20,7 +20,7 @@ import com.revature.repositories.CalendarEventRepository;
  * database. The methods in this class are called from the CalendarController
  * class methods. They call repository methods to carry out CRUD functionality.
  * 
- * @author Derek Loisel, Batch: 1806-jun18-usf-java, Trainer: Wezley Singleton
+ * @author Derek Loisel | 1806-Jun18-USF-Java | Wezley Singleton
  */
 
 @Service
@@ -38,6 +38,7 @@ public class CalendarService {
 	 * This method Returns all Calendar events in the database
 	 * 
 	 * @return List<CalendarEvent> a list of all calendar events
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	public List<CalendarEvent> findAllCalendarEvents() {
 		return calendarEventRepo.findAll();
@@ -47,7 +48,7 @@ public class CalendarService {
 	 * This method returns a list of all custom calendar events
 	 * 
 	 * @return List<CalendarEvent>
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	public List<CalendarEvent> findAllCustomEvents() {
 		return calendarEventRepo.findCalendarEventBySubTopicId(-1);
@@ -58,6 +59,7 @@ public class CalendarService {
 	 * 
 	 * @param int id
 	 * @return CalendarEvent
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	public CalendarEvent findCalendarEventById(int id) {
 		return calendarEventRepo.findCalendarEventById(id);
@@ -68,7 +70,7 @@ public class CalendarService {
 	 * 
 	 * @param int id
 	 * @return List<CalendarEvent>
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	public List<CalendarEvent> findCalendarEventByTrainerId(String id){
 		return calendarEventRepo.findCalendarEventByTrainerId(id);
@@ -81,7 +83,7 @@ public class CalendarService {
 	 * 
 	 * @param CalendarEvent newCalendarEvent
 	 * @return List<CalenderEvent>
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	public List<CalendarEvent> addCalendarEvent(List<CalendarEvent> events) {
 		return calendarEventRepo.save(events);
@@ -93,7 +95,7 @@ public class CalendarService {
 	 * @param CalendarEvent updatedCalendarEvent
 	 * @return Returns the updated CalendarEvent object if the object exists,
 	 *         otherwise returns null
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	public CalendarEvent updateCalendarEvent(CalendarEvent updatedCalendarEvent) {
 		CalendarEvent calendarEvent = calendarEventRepo.findCalendarEventById(updatedCalendarEvent.getId());
@@ -107,7 +109,7 @@ public class CalendarService {
 	 * This method is a scheduled task. It will run at the specified time and
 	 * will call a method to update the status of calendar events
 	 * 
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	@Scheduled(cron = statusChangeTime)
 	public void updateStatusTimer() {
@@ -119,7 +121,7 @@ public class CalendarService {
 	 * status of all events with an end date before the current date that have a
 	 * status of pending into a status of missed
 	 * 
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	public void updateStatus() {
 		Date currentDate = new Date();
