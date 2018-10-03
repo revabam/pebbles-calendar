@@ -12,7 +12,11 @@ description VARCHAR(250) NOT NULL,
 status_id INTEGER,
 start_date_time TIMESTAMP,
 end_date_time TIMESTAMP,
+<<<<<<< HEAD
 trainer_id INTEGER NOT NULL,
+=======
+trainer_id VARCHAR(200) NOT NULL,
+>>>>>>> 1d53405c2ab44ea173142febcbd4d1f0c3712271
 batch_id INTEGER NOT NULL,
 subtopic_id INTEGER NOT NULL,
 flagged_id INTEGER NOT NULL,

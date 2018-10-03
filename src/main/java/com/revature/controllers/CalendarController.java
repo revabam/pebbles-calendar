@@ -92,7 +92,7 @@ public class CalendarController {
 	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
 	 */
 	@GetMapping("/event/trainer/{id}")
-	public ResponseEntity<List<CalendarEvent>> findCalendarEventByTrainerId(@PathVariable("id") int id) {
+	public ResponseEntity<List<CalendarEvent>> findCalendarEventByTrainerId(@PathVariable("id") String id) {
 		List<CalendarEvent> events = calendarService.findCalendarEventByTrainerId(id);
 		return new ResponseEntity<>(events, HttpStatus.OK);
 	}
