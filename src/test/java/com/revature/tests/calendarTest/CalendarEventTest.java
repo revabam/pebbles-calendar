@@ -31,7 +31,7 @@ public class CalendarEventTest extends TestDriver {
 	@Test
 	public void canGetCalendarEventById() {
 		int calendarEventId = RestAssured.get(url + "/events/1").as(CalendarEvent.class).getId();
-		assertEquals(1, calendarEventId);
+		assertEquals("1", calendarEventId);
 	}
 
 

@@ -21,7 +21,7 @@ merge into status (id, status)
 values(1, 'active');
 
 merge into status (id, status)
-values(2, 'inactive');
+values(1, 'inactive');
 
 /*
 merge mock data into the calendar_event table
