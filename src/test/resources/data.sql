@@ -5,7 +5,11 @@ merge into status (id, status)
 values(1, 'planned');
 
 merge into status (id, status)
+
+values(1, 'inactive');
+
 values(2, 'complete');
+
 
 merge into status (id, status)
 values(3, 'cancelled');

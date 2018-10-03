@@ -48,7 +48,7 @@ public class CalendarEvent implements Serializable {
 
 	@NotNull
 	@Column(name = "trainer_id")
-	private int trainerId;
+	private String trainerId;
 
 	@Column(name = "batch_id")
 	private int batchId;
@@ -64,7 +64,7 @@ public class CalendarEvent implements Serializable {
 	}
 
 	public CalendarEvent(int id, String title, String description, int statusId, Date startDateTime, Date endDateTime,
-			int trainerId, int batchId, int subTopicId, int flaggedId) {
+			String trainerId, int batchId, int subTopicId, int flaggedId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -79,7 +79,7 @@ public class CalendarEvent implements Serializable {
 	}
 
 	public CalendarEvent(String title, String description, int statusId, Date startDateTime, Date endDateTime,
-			int trainerId, int batchId, int subTopicId, int flaggedId) {
+			String trainerId, int batchId, int subTopicId, int flaggedId) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -140,11 +140,11 @@ public class CalendarEvent implements Serializable {
 		this.endDateTime = endDateTime;
 	}
 
-	public int getTrainerId() {
+	public String getTrainerId() {
 		return trainerId;
 	}
 
-	public void setTrainerId(int trainerId) {
+	public void setTrainerId(String trainerId) {
 		this.trainerId = trainerId;
 	}
 
@@ -185,7 +185,7 @@ public class CalendarEvent implements Serializable {
 		result = prime * result + statusId;
 		result = prime * result + subTopicId;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + trainerId;
+		result = prime * result + ((trainerId == null) ? 0 : trainerId.hashCode());
 		return result;
 	}
 
@@ -228,7 +228,10 @@ public class CalendarEvent implements Serializable {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
-		if (trainerId != other.trainerId)
+		if (trainerId == null) {
+			if (other.trainerId != null)
+				return false;
+		} else if (!trainerId.equals(other.trainerId))
 			return false;
 		return true;
 	}
