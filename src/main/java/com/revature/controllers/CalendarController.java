@@ -27,7 +27,7 @@ import com.revature.services.CalendarService;
  * endpoints are hit. They call CalendarService class methods to implement the
  * CRUD functionality and finally return a ResponseEntity to the client
  * 
- * @author author Derek Loisel | 1806-jun18-usf-java | Wezley Singleton
+ * @author Derek Loisel | 1806-Jun18-USF-Java | Wezley Singleton
  */
 
 @CrossOrigin
@@ -44,8 +44,8 @@ public class CalendarController {
 	 * @param no parameters are taken
 	 * @return Returns a response entity containing a list of all calendar events
 	 *         and an http status code
-	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author John Beineke | 1806-Jun18-USF-Java | Wezley Singleton
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	@GetMapping("/event")
 	public ResponseEntity<List<CalendarEvent>> findAllCalendarEvents() {
@@ -58,7 +58,7 @@ public class CalendarController {
 	 * 
 	 * @return Returns a response entity containing a list of all custom calendar events
 	 *         and an http status code
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey     
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey     
 	 */
 	@GetMapping("/event/custom")
 	public ResponseEntity<List<CalendarEvent>> findAllCustomEvents() {
@@ -72,8 +72,8 @@ public class CalendarController {
 	 * @param an int id parameter is taken in
 	 * @return Returns a response entity containing a calendar event that
 	 *         corresponds with the id parameter and an http status code
-	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author John Beineke | 1806-Jun18-USF-Java | Wezley Singleton
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	@GetMapping("/event/{id}")
 	public ResponseEntity<CalendarEvent> findCalendarEventById(@PathVariable("id") int id) {
@@ -89,7 +89,7 @@ public class CalendarController {
 	 * 
 	 * @param int id
 	 * @return Retruns a response entity containing a list of calendar events and an http status code
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	@GetMapping("/event/trainer/{id}")
 	public ResponseEntity<List<CalendarEvent>> findCalendarEventByTrainerId(@PathVariable("id") String id) {
@@ -104,8 +104,8 @@ public class CalendarController {
 	 * @param a CalendarEvent is taken in as the request body
 	 * @return The CalendarEvent that was added to the database with its generated
 	 *         id, and a corresponding http status code
-	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author John Beineke | 1806-Jun18-USF-Java | Wezley Singleton
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	@PostMapping("/event")
 	public ResponseEntity<List<CalendarEvent>> addCalendarEvent(@RequestBody List<CalendarEvent> events) {
@@ -120,8 +120,8 @@ public class CalendarController {
 	 * @param a CalendarEvent is taken in as the request body
 	 * @return The updated CalendarEvent object as it exist in the database, and a
 	 *         corresponding Http Status Code in a ResponseEntity
-	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author John Beineke | 1806-Jun18-USF-Java | Wezley Singleton
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	@PutMapping("/event")
 	public ResponseEntity<CalendarEvent> updateCalendarEvent(@RequestBody CalendarEvent updatedCalendarEvent) {

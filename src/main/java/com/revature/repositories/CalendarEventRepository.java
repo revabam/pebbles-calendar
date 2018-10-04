@@ -27,7 +27,7 @@ public interface CalendarEventRepository extends JpaRepository<CalendarEvent, In
 	 * 
 	 * @param int id
 	 * @return Calendar Event
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	CalendarEvent findCalendarEventById(int id);
 	
@@ -36,7 +36,7 @@ public interface CalendarEventRepository extends JpaRepository<CalendarEvent, In
 	 * 
 	 * @param String trainerId
 	 * @return List<CalendarEvent>
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	List<CalendarEvent> findCalendarEventByTrainerId(String trainerId);
 	
@@ -45,7 +45,7 @@ public interface CalendarEventRepository extends JpaRepository<CalendarEvent, In
 	 * 
 	 * @param int subTopicId
 	 * @return List<CalendarEvent>
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	List<CalendarEvent> findCalendarEventBySubTopicId(int subTopicId);
 
@@ -55,7 +55,7 @@ public interface CalendarEventRepository extends JpaRepository<CalendarEvent, In
 	 * @param int statusId
 	 * @param Date currentDate
 	 * @return List<CalendarEvent>
-	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
 	@Query("SELECT c FROM CalendarEvent c WHERE c.endDateTime <= :currentDate AND c.statusId = :statusId")
 	List<CalendarEvent> findCalendarEventByStatusIdAndDate(@Param("statusId") int statusId, @Param("currentDate") Date currentDate);
