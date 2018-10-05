@@ -76,7 +76,6 @@ public class CalendarService {
 		return calendarEventRepo.findCalendarEventByTrainerId(id);
 	}
 	
-
 	/**
 	 * This method takes a list of CalendarEvent objects and persists them to a database.
 	 * If the event already exists its information will be updated in the database
@@ -131,5 +130,4 @@ public class CalendarService {
 			updateCalendarEvent(event);
 		}
 	}
-
 }

@@ -37,5 +37,4 @@ private Logger logger = Logger.getLogger(this.getClass());
 			logger.error("Error!");
 			logger.debug("Now Debugging...");
 	}
-	
 }

@@ -59,5 +59,4 @@ public interface CalendarEventRepository extends JpaRepository<CalendarEvent, In
 	 */
 	@Query("SELECT c FROM CalendarEvent c WHERE c.endDateTime <= :currentDate AND c.statusId = :statusId")
 	List<CalendarEvent> findCalendarEventByStatusIdAndDate(@Param("statusId") int statusId, @Param("currentDate") Date currentDate);
-
 }
