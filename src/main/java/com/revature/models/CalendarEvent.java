@@ -14,6 +14,14 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * This class is a java bean for the CALENDAR_EVENT table
+ * It includes all the fields in the table as well as getters and setters for all of them
+ * There are also methods that override the hashCode(), equals(), and toString() methods
+ * 
+ * @author Alicia
+ */
+
 @Entity
 @Component
 @Table(name = "CALENDAR_EVENT")
