@@ -3,6 +3,9 @@ Calendar Service application for the Pebbles Microservice Ecosystem
 
 # Sprint 2 Final Thoughts - 10/05/18
 - Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
+- Obosa Nosa-Igiebor | Spark1806-USF-Java | Steven Kelsey
+- Marcin Salamon | Spark1806-USF-Java | Steven Kelsey
+- Joshua Maciejewski | Spark1806-USF-Java | Steven Kelsey
 
 The models in this service where updated so they now only include the calendar_event and status models. The endpoints were adjusted to match what was required for the client-side calendar component and the client-side application is now communicating with the server-side.
 
