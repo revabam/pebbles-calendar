@@ -57,7 +57,7 @@ public class CalendarEventTest extends TestDriver {
 		
 		CalendarEvent newCalendarEvent = new CalendarEvent( "Polymorphism event",
 				"This is Polymorphism event from the Polymorphism subtopic in the Core Java topic", 3,
-				new Date(1637224472690l), new Date(1937224472690l), 3, 3, 3, 3);
+				new Date(1637224472690l), new Date(1937224472690l), "3", 3, 3, 3);
 		
 		int status = RestAssured.given().contentType("application/json").body(newCalendarEvent).post(url + "/event").getStatusCode();
 		
@@ -69,7 +69,7 @@ public class CalendarEventTest extends TestDriver {
 		
 		CalendarEvent updateCalendarEvent = new CalendarEvent(2, "Polymorphism event",
 				"This is Polymorphism event from the Polymorphism subtopic in the Core Java topic", 1,
-				new Date(1637224472690l), new Date(1937224472690l), 1, 1, 1, 1);
+				new Date(1637224472690l), new Date(1937224472690l), "1", 1, 1, 1);
 		
 		int status = RestAssured.given().contentType("application/json").body(updateCalendarEvent).put(url + "/event").getStatusCode();
 		
