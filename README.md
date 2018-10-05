@@ -7,7 +7,7 @@ Calendar Service application for the Pebbles Microservice Ecosystem
 - Marcin Salamon | Spark1806-USF-Java | Steven Kelsey
 - Joshua Maciejewski | Spark1806-USF-Java | Steven Kelsey
 
-The models in this service where updated so they now only include the calendar_event and status models. The endpoints were adjusted to match what was required for the client-side calendar component and the client-side application is now communicating with the server-side.
+The models in this service where updated so they now only include the calendar_event and status models. The endpoints were adjusted to match what was required for the client-side calendar component and the client-side application is now communicating with the server-side. Aop logging was implemented using Splunk. Junit and REST Assured were used to test endpoints.
 
 There is still currently no inner-service communication with other microservices. REST-Template, fallback, circuit breaking, and messaging queues will need to be implemented in future sprints. 
 

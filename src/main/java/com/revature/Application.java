@@ -13,6 +13,17 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * This microservice persists and retrieves calendar information from a database
+ * This is the link to the pebbles-calendar repo
+ * This service is using Swagger to document all the endpoints
+ * https://github.com/revabam/pebbles-calendar
+ * 
+ * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
+ * @author Obosa Nosa-Igiebor | Spark1806-USF-Java | Steven Kelsey
+ * @author Marcin Salamon | Spark1806-USF-Java | Steven Kelsey
+ * @author Joshua Maciejewski | Spark1806-USF-Java | Steven Kelsey
+ */
 @CrossOrigin
 @EnableEurekaClient
 @SpringBootApplication

@@ -13,14 +13,14 @@ import com.revature.repositories.CalendarEventRepository;
 
 /**
  * This is the service that calls repository methods from
- * CalendarCurriculumRepository, CalendarEventRepository, and
- * CalendarSubtopicRepository to implement calendar CRUD functionality. It
- * implements CRUD functionality for calendar curriculums, calendar events, and
- * calendar subtopics. There is no functionality to delete records from the
- * database. The methods in this class are called from the CalendarController
- * class methods. They call repository methods to carry out CRUD functionality.
+ * CalendarEventRepository, and to implement calendar CRUD functionality. It
+ * implements CRUD functionality for calendar events. There is no functionality
+ * to delete records from the database. The methods in this class are called
+ * from the CalendarController class methods. They call repository methods to
+ * carry out CRUD functionality.
  * 
  * @author Derek Loisel | 1806-Jun18-USF-Java | Wezley Singleton
+ * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
  */
 
 @Service
@@ -43,7 +43,7 @@ public class CalendarService {
 	public List<CalendarEvent> findAllCalendarEvents() {
 		return calendarEventRepo.findAll();
 	}
-	
+
 	/**
 	 * This method returns a list of all custom calendar events
 	 * 
@@ -64,21 +64,23 @@ public class CalendarService {
 	public CalendarEvent findCalendarEventById(int id) {
 		return calendarEventRepo.findCalendarEventById(id);
 	}
-	
+
 	/**
-	 * This method returns a list of calendar events from the database based on the trainer id
+	 * This method returns a list of calendar events from the database based on the
+	 * trainer id
 	 * 
 	 * @param int id
 	 * @return List<CalendarEvent>
 	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */
-	public List<CalendarEvent> findCalendarEventByTrainerId(String id){
+	public List<CalendarEvent> findCalendarEventByTrainerId(String id) {
 		return calendarEventRepo.findCalendarEventByTrainerId(id);
 	}
-	
+
 	/**
-	 * This method takes a list of CalendarEvent objects and persists them to a database.
-	 * If the event already exists its information will be updated in the database
+	 * This method takes a list of CalendarEvent objects and persists them to a
+	 * database. If the event already exists its information will be updated in the
+	 * database
 	 * 
 	 * @param CalendarEvent newCalendarEvent
 	 * @return List<CalenderEvent>
@@ -105,8 +107,8 @@ public class CalendarService {
 	}
 
 	/**
-	 * This method is a scheduled task. It will run at the specified time and
-	 * will call a method to update the status of calendar events
+	 * This method is a scheduled task. It will run at the specified time and will
+	 * call a method to update the status of calendar events
 	 * 
 	 * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
 	 */

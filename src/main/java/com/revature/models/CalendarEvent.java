@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  * It includes all the fields in the table as well as getters and setters for all of them
  * There are also methods that override the hashCode(), equals(), and toString() methods
  * 
- * @author Alicia
+ * @author Alicia Douglas | Spark1806-USF-Java | Steven Kelsey
  */
 
 @Entity
